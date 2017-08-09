@@ -4,11 +4,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './css/page-init.scss'
-import InputTest from './components/test/InputTest'
+import App from './components/App'
 let rootElement = document.getElementById('app');
 
 ReactDOM.render(
-    <div>
-        <InputTest/>
-    </div>, rootElement
+        <App/>,rootElement
 );

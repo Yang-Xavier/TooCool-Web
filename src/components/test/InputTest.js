@@ -7,10 +7,18 @@ export default class InputTest extends React.Component {
     render() {
         return (
             <div>
-                <input type="file" onChange={e => {
-                    console.log(e.target.files)
-                }}/>
+                <canvas
+                    id="cvs"
+                    width={screen.width}
+                    height={screen.height}
+                ></canvas>
             </div>
         )
+    }
+
+    componentDidMount () {
+        const cvs = document.querySelector('#cvs');
+        const ctx = cvs.getContext('2d');
+
     }
 }
