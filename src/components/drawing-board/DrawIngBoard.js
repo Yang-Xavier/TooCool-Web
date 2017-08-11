@@ -7,13 +7,44 @@ import React from 'react'
 export default class DrawIngBoard extends React.Component {
     constructor(props){
         super(props);
+        this.state= {
+            cvs: null,
+            ctx: null
+        }
 
+    }
+
+    componentDidUpdate() {
+        if(this.props.draw)
+            this.drawing(this.props.draw);
     }
 
     componentDidMount() {
         const cvs = this.refs['cvs'];
         const ctx = cvs.getContext('2d');
-        this.props.getCanvas(cvs,ctx);
+        this.setState({
+            cvs: cvs,
+            ctx: ctx
+        });
+        this.props.getCanvas && this.props.getCanvas(cvs,ctx);
+        if(this.props.draw) {
+            if(this.props.draw.x) {
+                this.drawing(this.props.draw.img, this.props.draw.x, this.props.draw.y)
+            } else {
+                this.drawing(this.props.draw);
+            }
+        }
+
+    }
+
+    drawing(img) {
+        const x = (this.state.cvs.width - img.width) / 2;
+        const y = (this.state.cvs.height - img.height) / 2;
+
+        console.log(this.state.cvs.width,img.width);
+        console.log(this.state.cvs.height,img.height);
+        console.log(x,y)
+        this.state.ctx.drawImage(img, x, y);
     }
 
     render() {

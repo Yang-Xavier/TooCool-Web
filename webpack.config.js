@@ -11,7 +11,6 @@ const outputPath = path.resolve(__dirname, 'static/');
 const chunkCssFilename = 'css/build.css';
 const urlLoaderFilename = '[name].[ext]';
 
-console.log(outputPath)
 module.exports = {
     //页面入口文件配置
     entry: {

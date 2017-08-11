@@ -1,3 +1,8 @@
+*{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select:none;
+}
 html,
 body {
   width: 100%;
@@ -31,6 +36,7 @@ input {
   &:focus {
   outline: none;
   }
+  -webkit-user-select:auto;
 }
 #app {
   width: 100%;
