@@ -5,7 +5,7 @@
  * Created by yangbingxun on 2017/8/8.
  */
 import React from 'react';
-import DrawIngBoard from '../drawing-board/DrawIngBoard';
+import DrawIngBoard from '../ImageProcess/DrawIngBoard';
 import Redo_Undo from '../../utils/redo_undo'
 import { resize, crop, readFileAsImg, rotate } from '../../utils/img-process'
 import touch from '../../lib/touch-0.2.14'
@@ -19,7 +19,6 @@ export default class CanvasTest extends React.Component {
             cvs: null,
             ctx: null,
             img: null,
-            originImg: null
         };
 
         this.getCanvas = this.getCanvas.bind(this)
@@ -56,7 +55,7 @@ export default class CanvasTest extends React.Component {
     }
 
     rotate() {
-        rotate(this.state.originImg, false, 180)
+        rotate(this.state.img, false, 180)
             .then( img => {
                 this.setState({
                     img: img
@@ -87,6 +86,9 @@ export default class CanvasTest extends React.Component {
                         this.setState({img: img2});
                     });
             })
+    }
+
+    componentDidMount() {
     }
 
     render() {

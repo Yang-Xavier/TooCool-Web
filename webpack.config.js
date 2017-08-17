@@ -35,12 +35,13 @@ module.exports = {
                 include: [ srcPath ]
             },
             {
-                test: /images\/favicons\/.*?\.png$/,
+                test: /\.(png|PNG|jpg|JPG)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
-                            name: 'images/favicons/' + urlLoaderFilename
+                            name: 'images/' + urlLoaderFilename,
+                            limit: 8192
                         }
                     }
                 ]
@@ -64,7 +65,6 @@ module.exports = {
             filename: 'index.html',
             template: './src/view/index.html',
             inject: true,
-            favicon: './src/image/icon/logo.ico'
         })
     ],
     devServer: {
@@ -72,5 +72,6 @@ module.exports = {
         port: 80,
         publicPath: '/static/',
         host:'192.168.2.189',
+        // host:'192.168.31.207',
     }
 };

@@ -12,6 +12,7 @@ const page_init_setting = () => {
         return el.classList.contains('scroller');
     };
 
+
     document.body.style.height = screen.height + 'px';
     document.addEventListener('touchmove', preventDefault, false);
     document.body.addEventListener('touchmove', function (ev) {
@@ -20,6 +21,7 @@ const page_init_setting = () => {
         if (isScroller(target)) {
             ev.stopPropagation()
         }
+
     }, false)
 };
 

@@ -4,6 +4,25 @@
 
 //传入的img必须是onload的
 
+export const readUrlToImg = url => {
+    const img = document.createElement("img");
+    img.src = url;
+    return new Promise( res => {
+        img.onload = e => {
+            const cvs = document.createElement('canvas');
+            const ctx = cvs.getContext('2d');
+            cvs.width = img.width;
+            cvs.height = img.height;
+            ctx.drawImage(img,0,0);
+            const img2 = document.createElement('img');
+            img.src = cvs.toDataURL();
+            img.onload = e => {
+                res(img);
+            }
+        }
+    })
+};
+
 export const readFileAsImg = file => {
     if(!file) {
         throw '请选择文件'
@@ -13,56 +32,51 @@ export const readFileAsImg = file => {
 
     return new Promise( res => {
         fr.onload = e => {
-            let img = document.createElement('img');
-            img.src = fr.result;
-            img.onload = e => {
-                res(img);
-            }
+                res(fr.result);
         }
     })
 
 };
 
-export const resize = (img, width, height = screen.height) => {
+export const resize = (img, max_width = screen.width, max_height = screen.height) => {
     if(!img.complete) {
         throw '图片加载完成才能处理'
     }
-    if(img.width == width && img.height == height) {
+    if(img.width == max_width && img.height == max_height) {
         return new Promise(res => {
-            if(img.complete) {
-                res(img);
-            }
+            res(img);
         });
     }
     const imgWidth = img.width;
     const imgHeight = img.height;
     let newWidth = 0;
     let newHeight = 0;
-    let scale = imgWidth/width;
-    if(imgHeight/scale >height) {
-        scale = imgHeight / height;
+    let scale = imgWidth/max_width;
+    if(imgHeight / scale > max_height) {
+        scale = imgHeight / max_height;
         newWidth = (imgWidth/scale).toFixed(0);
-        newHeight = height;
+        newHeight = max_height;
     } else {
-        newWidth = width;
+        newWidth = max_width;
         newHeight = (imgHeight/scale).toFixed(0);
     }
     const cvs = document.createElement('canvas');
     const ctx = cvs.getContext('2d');
+    newHeight*=2;
+    newWidth*=2;
     cvs.width = newWidth;
     cvs.height = newHeight;
-    ctx.drawImage(img, 0, 0, newWidth, newHeight);
+    ctx.drawImage(img, 0, 0, newWidth , newHeight);
     img.src = cvs.toDataURL();
 
     return new Promise(res => {
         if(img.complete) {
-            res(img)
+            res(img);
         } else {
             img.onload = e => {
-                res(img)
+                res(img);
             }
         }
-
     });
 
 
@@ -84,9 +98,7 @@ export const crop = (img, x, y, width, height) => {
             res(img)
         } else {
             img.onload = e => {
-                resize(img, screen.width)
-                    .then(img => res(img));
-
+                res(img);
             }
         }
     });
@@ -117,9 +129,7 @@ export const rotate = (img, forward, deg = 90) => {
                     const result1 = crop(img, 0, 0, height, width);
                     result1.then(
                         img2 => {
-                            resize(img2,screen.width).then(img3 => {
-                                res(img3)
-                            })
+                            res(img2)
                         }
                     )
 
@@ -135,9 +145,7 @@ export const rotate = (img, forward, deg = 90) => {
                     const result2 = crop(img, 0, 0, width, height);
                     result2.then(
                         img2 => {
-                            resize(img2,screen.width).then(img3 => {
-                                res(img3)
-                            })
+                            res(img2)
                         }
                     )
 
@@ -152,9 +160,7 @@ export const rotate = (img, forward, deg = 90) => {
                     const result3 = crop(img, 0, 0, height, width);
                     result3.then(
                         img2 => {
-                            resize(img2,screen.width).then(img3 => {
-                                res(img3)
-                            })
+                            res(img2);
                         }
                     )
 

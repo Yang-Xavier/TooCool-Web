@@ -1,0 +1,74 @@
+@import "img-process-base";
+
+$menuBtnWidth : 2.75rem;
+$menuIconSize : 1.25rem;
+$bottomHeight : 6.875rem;
+
+.main-pane {
+  .head-nav {
+    .btn {
+      &.return-btn {
+        background: url("../images/icon/style/back.png") center no-repeat;
+        background-size: $menuIconSize;
+        margin-left: 1rem;
+      }
+
+      &.next-btn {
+        float: right;
+        background: url("../images/icon/style/forward.png") center no-repeat;
+        background-size: $menuIconSize;
+        transform: rotate(180deg);
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  .content-pane {
+    width: 100%;
+    height: calc( 100% - #{$menuBtnWidth} );
+    position: relative;
+
+    > div {
+      margin: 0 auto;
+    }
+    img {
+      display: block;
+      margin: auto auto;
+      width: 100%;
+    }
+  }
+
+  .select-style-label {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+
+    ul {
+      position: relative;
+      padding-left: .3125rem;
+      overflow: hidden;
+
+      li {
+        width: 4.375rem;
+        height: $bottomHeight;
+        display: inline-block;
+        overflow: hidden;
+
+        section {
+          margin: .625rem .3125rem;
+          width: 3.75rem;
+          height: 5.625rem;
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
+
+

@@ -41,9 +41,6 @@ export default class DrawIngBoard extends React.Component {
         const x = (this.state.cvs.width - img.width) / 2;
         const y = (this.state.cvs.height - img.height) / 2;
 
-        console.log(this.state.cvs.width,img.width);
-        console.log(this.state.cvs.height,img.height);
-        console.log(x,y)
         this.state.ctx.drawImage(img, x, y);
     }
 

@@ -1,0 +1,281 @@
+@import "img-process-base";
+
+@mixin init-background-img {
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: center;
+}
+@mixin font {
+  text-align: center;
+  color: #fff;
+  font: {
+    family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", \5fae\8f6f\96c5\9ed1, "WenQuanYi Micro Hei", \5b8b\4f53, sans-serif;
+    weight: 300;
+  }
+};
+.main-pane {
+  .head-nav {
+    display: flex;
+    flex: {
+      direction: row;
+      wrap: nowrap;
+    }
+    justify-content: space-around;
+
+    .btn {
+      display: inline-block;
+
+      &.icon-back {
+        flex: {
+          grow: 1;
+        };
+        @include init-background-img;
+        background-image: url('../images/icon/style/back.png');
+      }
+
+      &.icon-undo {
+        flex: {
+          grow: 1;
+        };
+        @include init-background-img;
+        background-image: url('../images/icon/style/undo.png');
+      }
+
+      &.icon-redo {
+        flex: {
+          grow: 1;
+        };
+        @include init-background-img;
+        background-image: url('../images/icon/style/redo.png');
+
+
+      }
+
+      &.icon-clear {
+        flex: {
+          grow: 1;
+        };
+        @include init-background-img;
+        background-image: url('../images/icon/style/refresh.png');
+      }
+
+      &.icon-save {
+        flex: {
+          grow: 1;
+        };
+        @include init-background-img;
+        background-image: url('../images/icon/style/save.png');
+      }
+    }
+  }
+
+  .foot-nav {
+    position: absolute;
+    width: 100%;
+    height: 3.3rem;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-around;
+    flex: {
+      direction: row;
+      wrap: nowrap;
+    }
+    background: #282826;
+
+    .btn {
+      display: inline-block;
+      @include font;
+      color: #A7A7A7 ;
+
+      i {
+        display: block;
+        width: 3rem;
+        height: 1.5rem;
+        position: absolute;
+        top: .5rem;
+        margin: auto;
+        background-size: 1.2rem;
+      }
+
+      label {
+        display: block;
+        width: 3rem;
+        height: 1.2rem;
+        position: absolute;
+        top: 2rem;
+        margin: auto;
+      }
+
+      &.icon-adjust {
+        i{
+          @include init-background-img;
+          background-image: url('../images/icon/style/adjust.png');
+          right: 1rem;
+        }
+        label {
+          right: 1rem;
+        }
+      }
+      &.icon-crop {
+
+        i {
+          @include init-background-img;
+          background-image: url('../images/icon/style/cut.png');
+          left: 0;
+          right: 0;
+        }
+        label {
+          left: 0;
+          right: 0;
+        }
+
+      }
+      &.icon-paint {
+        i{
+          @include init-background-img;
+          background-image: url('../images/icon/style/apply.png');
+          left: 1rem;
+        }
+        label {
+          left: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.style-process-pane {
+  top: 1rem;
+  position: absolute;
+  width: 100%;
+  height: calc( 100% - 1rem) !important;
+  overflow: hidden;
+
+  .image-label {
+    width: 100%;
+    height: calc( 100% - 5.25rem);
+    position: relative;
+
+    .content-pane {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mask {
+      height: 100%;
+      z-index: 999;
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+
+  .tool-bar {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 5.25rem;
+
+    .option {
+      width: 100%;
+      height: 2.125rem;
+      text-align: center;
+      line-height: 2.125rem;
+      @include font;
+
+      span {
+        font-size: 1rem;
+        display: inline-block;
+        height: 2.2rem;
+        line-height: 2rem;
+        margin: 0 2rem;
+        position: relative;
+        vertical-align: middle;
+      }
+
+      .switch {
+        width: 4rem;
+        color: #171717;
+
+        .switch-btn {
+          width: 2.5rem;
+          border: 1px solid #171717;
+          background: #fff;
+          border-radius: 1rem;
+          position: absolute;
+          transition: all 0.2s cubic-bezier(.35,-0.59,.64,1.53);
+          left: 0;
+          top: 0;
+          bottom: 0;
+          margin: 0;
+          z-index: 1;
+        }
+
+        .switch-road {
+          height: 1.5rem;
+          width: 4rem;
+          position: absolute;
+          border: 1px solid #fff;
+          border-radius: 1rem;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          z-index: 0;
+        }
+      }
+    }
+
+    .menu {
+      width: 100%;
+      height: 3.125rem;
+      display: flex;
+
+      flex:{
+        direction: row;
+      }
+
+      justify-content: space-between;
+
+      .forward {
+        @include init-background-img;
+        background-image: url("../images/icon/style/forward.png");
+        flex: {
+          grow: 1;
+        };
+      }
+
+      .title {
+        @include font;
+        text-align: center;
+        line-height: 3.125rem;
+        font-size: 1rem;
+        flex: {
+          grow: 3;
+        };
+      }
+
+      .check {
+        @include init-background-img;
+        background-image: url("../images/icon/style/check.png");
+        flex: {
+          grow: 1;
+        };
+      }
+    }
+  }
+
+
+}
