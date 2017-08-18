@@ -5,6 +5,7 @@
 import React from 'react';
 import StyleTransferProcess from '../ImageProcess/StyleTransferProcess';
 import StyleAdjust from '../ImageProcess/StyleAdjust';
+import StyleCrop from '../ImageProcess/StyleCrop';
 
 import SaveStack from '../../utils/SaveStack'
 
@@ -87,6 +88,9 @@ export default class StyleTransferResult extends React.Component {
                 />;
                 break;
             case 2:
+                return <StyleCrop
+
+                />;
                 break;
             case 3:
                 break;

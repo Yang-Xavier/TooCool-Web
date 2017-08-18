@@ -19,7 +19,7 @@ export default class FooterNav extends React.Component {
                     <i />
                     <label>调整</label>
                 </div>
-                <div className="btn icon-crop">
+                <div onTouchStart={e => this.props.changePage(2)} className="btn icon-crop">
                     <i />
                     <label>裁剪</label>
                 </div>
