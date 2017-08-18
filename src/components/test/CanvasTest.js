@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import DrawIngBoard from '../ImageProcess/DrawIngBoard';
-import Redo_Undo from '../../utils/redo_undo'
+import Redo_Undo from '../../utils/SaveStack'
 import { resize, crop, readFileAsImg, rotate } from '../../utils/img-process'
 import touch from '../../lib/touch-0.2.14'
 

@@ -2,7 +2,7 @@
  * Created by yangbingxun on 2017/8/9.
  */
 
-export default class Redo_Undo {
+export default class SaveStack {
     constructor(limit){
         this.history = [];
         this.index = -1;
@@ -11,38 +11,42 @@ export default class Redo_Undo {
 
     push(history) {
         if(this.limit - 1 > this.index && this.history.length < this.limit) {
-            console.log(this.limit,this.index,this.history.length);
             this.history.splice(this.index+1, this.history.length);
             this.history.push(history);
             this.index++;
         }else {
             this.index = this.limit - 1;
-            console.log(this.limit,this.index,this.history.length);
             this.history.shift();
             this.history.push(history);
         }
     }
 
-    pop() {
+    undo() {
         if(this.index > 0) {
             this.index--;
         } else {
             this.index = 0;
         }
-        return this.history[this.index];
+        return this.getHistory()
     }
 
     redo() {
-        return this.pop()
-    }
-
-    undo() {
         if(this.limit - 1 > this.index && this.index < this.history.length - 1) {
             this.index++;
         } else {
             this.index = this.history.length - 1
         }
-        return this.history[this.index];
+        return this.getHistory();
+    }
+
+    clear() {
+        this.history.splice(1);
+        this.index = 0;
+    }
+
+    clearAll() {
+        this.history = [];
+        this.index = -1;
     }
 
     couldRedo() {
@@ -57,6 +61,10 @@ export default class Redo_Undo {
             return true;
         else
             return false
+    }
+
+    getHistory(index) {
+        return this.history[index || this.index];
     }
 
 }

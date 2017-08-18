@@ -61,3 +61,19 @@ body {
 }
 
 
+.test-appear {
+  transform: translateX(100%);
+
+  &.test-appear-active {
+    transform: translateX(0);
+    transition: all .6s linear;
+  }
+}
+.test-leave {
+  transform: translateX(0);
+
+  &.test-leave-active {
+    transform: translateX(100%);
+    transition: all .6s linear;
+  }
+}

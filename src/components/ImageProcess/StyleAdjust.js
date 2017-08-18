@@ -5,26 +5,22 @@
 import React from 'react'
 import ImagePane from './ImagePane'
 import Toast from '../com/Toast'
-import '../../css/image-process.scss'
-
-import origin_img from '../../images/test/p1.png'
-import result_img from '../../images/test/guichu.png'
-import other_img from '../../images/test/IMG_3793.JPG'
 
 export default class StyleAdjust extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             isProtect: false,
-            opacity: 1
+            opacity: 1,
+            load: false,
+            isModifiy: false
         }
-
     }
 
     switch_protect() {
         this.setState({
-            isProtect: !this.state.isProtect
+            isProtect: !this.state.isProtect,
+            isModifiy: true
         })
     }
 
@@ -46,6 +42,9 @@ export default class StyleAdjust extends React.Component {
                     opacity: newOpacity
                 });
                 startX = e.touches[0].clientX;
+                self.setState({
+                    isModifiy: true
+                })
             },
             'touchstart': e => {
                startX =  e.touches[0].clientX;
@@ -55,11 +54,71 @@ export default class StyleAdjust extends React.Component {
         return Event
     }
 
+    produceImg() {
+        const alphaImg = this.state.isProtect? this.props.protectImg : this.props.resultImg;
+        const img1 = document.createElement('img');
+        const img2 = document.createElement('img');
+
+        img1.src = this.props.originImg;
+        img2.src = alphaImg;
+
+        return Promise.all([
+            new Promise(res=> {img1.onload = e=> {res()}}),
+            new Promise(res=> {img2.onload = e=> {res()}})
+        ]).then(res => {
+            const cvs = document.createElement('canvas');
+            cvs.width = img1.width;
+            cvs.height = img1.height;
+            const ctx = cvs.getContext('2d');
+
+            ctx.drawImage(img1, 0, 0, img1.width, img1.height);
+            ctx.globalAlpha = this.state.opacity;
+            ctx.drawImage(img2, 0, 0, img1.width, img1.height);
+            this.props.changeShowImg(cvs.toDataURL());
+        });
+    }
+
+    back() {
+        this.forwardAnimate()
+            .then( r => {
+                this.props.changePage(0)
+            })
+    }
+
+    saveAndBack() {
+        this.produceImg().then(r => {
+            this.forwardAnimate()
+                .then( r => {
+                    this.props.changePage(0)
+                })
+        });
+
+    }
+
+    forwardAnimate() {
+        return new Promise(res => {
+            this.refs['pane'].style.transform = `translateX(100%)`;
+            setTimeout(() => {
+                res();
+            },600)
+        })
+    }
+
+    componentDidMount() {
+        setTimeout(() => {this.refs['pane'].style.transform = `translateX(0px)`},0)
+    }
+
     render() {
+        const animateStyle = {transform : `translateX(100%)`,transition:`all .4s linear`};
+
         return(
-            <div className="style-process-pane ">
+            <div style={animateStyle} ref="pane" className="style-process-pane">
                 <div className="image-label">
-                    <ImagePane height = { screen.height - 120} img={origin_img}/>
+                    <ImagePane
+                        height = { screen.height - 120}
+                        img={this.props.originImg}
+                        className="content-pane mask"
+                    />
                     <ImagePane
                         events={this.control_opacity()}
                         style={{
@@ -68,7 +127,7 @@ export default class StyleAdjust extends React.Component {
                         }}
                         height = { screen.height - 120}
                         className="content-pane mask"
-                        img={other_img}/>
+                        img={this.props.protectImg}/>
                     <ImagePane
                         events={this.control_opacity()}
                         style={{
@@ -77,7 +136,7 @@ export default class StyleAdjust extends React.Component {
                         }}
                         height = { screen.height - 120}
                         className="content-pane mask"
-                        img={result_img}/>
+                        img={this.props.resultImg}/>
 
                 </div>
                 <div className="tool-bar">
@@ -94,22 +153,31 @@ export default class StyleAdjust extends React.Component {
                         <span className="title">颜色保护</span>
                     </div>
                     <div className="menu">
-                        <span className="forward"/>
+                        <span onTouchStart={e => {this.back();}} className="forward"/>
                         <span className="title">调整</span>
-                        <span className="check"/>
+                        <span onTouchStart={e => {
+                            if(this.state.isModifiy) {
+                                this.saveAndBack();
+                            } else {
+                                this.back();
+                            }
+
+                        }} className="check"/>
                     </div>
                 </div>
                 <Toast
                     msg="左右滑动试试看"
-                    showTime="3"
+                    showTime="2"
                     forward="down"
+                    top="3rem"
                 />
                 <Toast
                     msg={`${(this.state.opacity * 100).toFixed(0)}%`}
-                    showTime="3"
+                    showTime="2"
                     bottom="8rem"
                 />
             </div>
         )
     }
+
 }

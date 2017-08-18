@@ -3,7 +3,7 @@
  */
 
 //传入的img必须是onload的
-
+//硬性调整
 export const readUrlToImg = url => {
     const img = document.createElement("img");
     img.src = url;
@@ -176,4 +176,3 @@ export const rotate = (img, forward, deg = 90) => {
 
     }
 };
-

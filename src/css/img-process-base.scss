@@ -25,15 +25,16 @@ $bottomHeight : 6.875rem;
     position: relative;
 
     > div {
-      margin: 0 auto;
-    }
-    img {
       display: block;
       margin: auto auto;
       position: absolute;
       left: 0;
       top: 0;
       right: 0;
+    }
+    img {
+      width: inherit;
+      height: inherit;
     }
   }
 

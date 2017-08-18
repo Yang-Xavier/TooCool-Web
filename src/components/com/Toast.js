@@ -16,23 +16,7 @@ export default class Toast extends React.Component {
     }
 
 
-    componentWillReceiveProps(nextProps) {
-        if(this.state.timeId && nextProps.msg != this.props.msg) {
-            clearTimeout(this.state.timeId);
-            this.refs['toast'].style.opacity = 1;
-        }
 
-        if(this.props.showTime != 'forever') {
-            this.setState({
-                timeId: setTimeout(() => {
-                    this.refs['toast'].style.opacity = 0;
-                    this.setState({
-                        timeId: null
-                    })
-                }, parseInt(this.props.showTime) * 1000)
-            })
-        }
-    }
 
     componentDidMount() {
         if(this.props.showTime != 'forever') {
@@ -44,6 +28,30 @@ export default class Toast extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        clearTimeout(this.state.timeId);
+        if(this.state.timeId && nextProps.msg != this.props.msg) {
+            this.refs['toast'].style.opacity = 1;
+        }
+
+        if(this.props.showTime != 'forever') {
+
+            this.setState({
+                timeId: setTimeout(() => {
+                    this.refs['toast'].style.opacity = 0;
+                    this.setState({
+                        timeId: null
+                    })
+                }, parseInt(this.props.showTime) * 1000)
+            })
+        }
+    }
+
+    componentWillUnmount() {
+        if(this.state.timeId) {
+            clearTimeout(this.state.timeId);
+        }
+    }
 
     render() {
         const style = {

@@ -75,7 +75,7 @@
     height: 3.3rem;
     left: 0;
     bottom: 0;
-    z-index: 999;
+    //z-index: 999;
     display: flex;
     justify-content: space-around;
     flex: {
@@ -87,6 +87,7 @@
     .btn {
       display: inline-block;
       @include font;
+      font-size: .75rem;
       color: #A7A7A7 ;
 
       i {
@@ -152,32 +153,34 @@
   width: 100%;
   height: calc( 100% - 1rem) !important;
   overflow: hidden;
+  left: 0;
+  background: #171717;
 
   .image-label {
     width: 100%;
     height: calc( 100% - 5.25rem);
     position: relative;
 
-    .content-pane {
+    .mask {
       position: absolute;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-    }
-
-    .mask {
-      height: 100%;
       z-index: 999;
-    }
 
-    img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      margin: auto;
+      > div {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+      }
+      img {
+        width: inherit;
+        height: inherit;
+      }
     }
   }
 
@@ -188,18 +191,20 @@
     left: 0;
     height: 5.25rem;
 
+
     .option {
       width: 100%;
       height: 2.125rem;
       text-align: center;
       line-height: 2.125rem;
+      padding-bottom: .6rem;
       @include font;
 
       span {
         font-size: 1rem;
         display: inline-block;
-        height: 2.2rem;
-        line-height: 2rem;
+        height: 2rem;
+        line-height: 1.7rem;
         margin: 0 2rem;
         position: relative;
         vertical-align: middle;
@@ -224,7 +229,7 @@
         }
 
         .switch-road {
-          height: 1.5rem;
+          height: 1rem;
           width: 4rem;
           position: absolute;
           border: 1px solid #fff;
@@ -242,6 +247,7 @@
       width: 100%;
       height: 3.125rem;
       display: flex;
+      background: #282826;
 
       flex:{
         direction: row;
@@ -276,6 +282,23 @@
       }
     }
   }
+}
 
 
+//animation
+.pane-appear {
+  transform: translateX(100%);
+
+  &.pane-appear-active {
+    transform: translateX(0);
+    transition: all .4s linear;
+  }
+}
+
+.pane-leave {
+  transform: translateX(0);
+  &.pane-leave-active {
+    transform: translateX(100%);
+    transition: all .4s linear;
+  }
 }

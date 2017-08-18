@@ -4,18 +4,18 @@
 import React from 'react';
 import { Router , Route, IndexRoute, browserHistory} from 'react-router'
 import page_init_setting from '../utils/page-init';
-import StyleTransfer from './StyleTransfer/StyleTransfer'
+// import StyleTransfer from './StyleTransfer/StyleTransfer'
 import CustomStyleTransfer from './StyleTransfer/CustomStyleTransfer'
-import StyleTransferProcess from './ImageProcess/StyleTransferProcess'
-import StyleAdjust from './ImageProcess/StyleAdjust'
+// import StyleTransferProcess from './ImageProcess/StyleTransferProcess'
+import StyleTransferResult from './StyleTransfer/StyleTransferResult'
 
 import '../css/page-init.scss'
 
 
-import ScrollTest from './test/ScrollTest'
+// import ScrollTest from './test/ScrollTest'
 // import './utils/event'
-
-import CanvasTest from './test/CanvasTest'
+// import CanvasTest from './test/CanvasTest'
+// import AnimateTest from './test/AnimateTest'
 
 
 export default class App extends React.Component {
@@ -31,7 +31,7 @@ export default class App extends React.Component {
     render() {
         return(
             <Router history={browserHistory}>
-                <Route path={"/"} components={StyleAdjust}></Route>
+                <Route path={"/"} components={StyleTransferResult}></Route>
                 {/*<Route path={"/process"} components={}></Route>*/}
                 {/*<Route path={"/styletrans"} components={}></Route>*/}
                 {/*<Route path={"/stylecustom"} components={}></Route>*/}

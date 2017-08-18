@@ -4,12 +4,9 @@
 
 import React from 'react'
 import ImageProcessHead from './ImageProcessHead'
-import ImageController from './ImageController'
 import FooterNav from './FooterNav'
 import ImagePane from './ImagePane'
 import '../../css/image-process.scss'
-
-import img from '../../images/test/IMG_3793.JPG'
 
 export default class StyleTransferProcess extends React.Component {
     constructor(props) {
@@ -21,12 +18,16 @@ export default class StyleTransferProcess extends React.Component {
 
         return(
             <div className="main-pane">
-                <ImageProcessHead />
+                <ImageProcessHead
+                    redo={this.props.redo}
+                    undo={this.props.undo}
+                    clear={this.props.clear}
+                />
                 <ImagePane
-                    img = {img}
+                    img = {this.props.showImg}
                     height = { screen.height - 120}
                 />
-                <FooterNav />
+                <FooterNav changePage={this.props.changePage}  />
             </div>
         )
     }

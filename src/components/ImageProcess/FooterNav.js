@@ -15,7 +15,7 @@ export default class FooterNav extends React.Component {
 
         return(
             <div className="foot-nav">
-                <div className="btn icon-adjust">
+                <div  onTouchStart={e => this.props.changePage(1)}  className="btn icon-adjust">
                     <i />
                     <label>调整</label>
                 </div>
