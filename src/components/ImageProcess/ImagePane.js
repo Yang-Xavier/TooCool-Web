@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import touch from '../../lib/touch-0.2.14'
+import touch from 'touchjs'
 
 export default class ImagePane extends React.Component {
     constructor(props) {
@@ -34,6 +34,18 @@ export default class ImagePane extends React.Component {
         return {width: newWidth, height: newHeight}
     }
 
+    componentWillReceiveProps(nextProps) {
+        const img = document.createElement('img');
+        img.src = nextProps.img;
+        img.onload = e => {
+            const wh = this.resize(img, this.props.width, this.props.height);
+            this.setState({
+                img: this.props.img,
+                width: wh.width,
+                height: wh.height
+            })
+        }
+    }
 
     componentWillMount() {
         const img = document.createElement('img');
@@ -52,13 +64,24 @@ export default class ImagePane extends React.Component {
         for(let key in this.props.events) {
             touch.on(this.refs['img_label'], key, this.props.events[key])
         }
+        if(this.props.postScale) {
+            if (this.refs['img'].complete) {
+                let scale = this.refs['img'].offsetWidth / this.refs['img'].naturalWidth;
+                this.props.postScale(scale);
+            }
+            this.refs['img'].onload = e => {
+                let scale = this.refs['img'].offsetWidth / this.refs['img'].naturalWidth;
+                this.props.postScale(scale);
+            }
+        }
+
     }
 
     render() {
-        let style = this.props.style || {};
+        const styles = this.props.styles || {};
 
         return (
-            <div style={style} className={this.props.className || "content-pane"}>
+            <div style={styles} className={this.props.className || "content-pane"}>
                 <div
                     ref="img_label"
                     style={{

@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd515113-a188-4efd-afda-41b2e857707f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/ImageProcess/CropPane.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/ImageProcess/StyleMasker.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/lib/touch-0.2.14.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/App.js" afterPath="$PROJECT_DIR$/src/components/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ImageProcess/FooterNav.js" afterPath="$PROJECT_DIR$/src/components/ImageProcess/FooterNav.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ImageProcess/CropPane.js" afterPath="$PROJECT_DIR$/src/components/ImageProcess/CropPane.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ImageProcess/ImagePane.js" afterPath="$PROJECT_DIR$/src/components/ImageProcess/ImagePane.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ImageProcess/StyleAdjust.js" afterPath="$PROJECT_DIR$/src/components/ImageProcess/StyleAdjust.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ImageProcess/StyleCrop.js" afterPath="$PROJECT_DIR$/src/components/ImageProcess/StyleCrop.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ImageProcess/StyleTransferProcess.js" afterPath="$PROJECT_DIR$/src/components/ImageProcess/StyleTransferProcess.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/StyleTransfer/StyleTransferResult.js" afterPath="$PROJECT_DIR$/src/components/StyleTransfer/StyleTransferResult.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/com/Toast.js" afterPath="$PROJECT_DIR$/src/components/com/Toast.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/custom-style-transfer.scss" afterPath="$PROJECT_DIR$/src/css/custom-style-transfer.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/image-process.scss" afterPath="$PROJECT_DIR$/src/css/image-process.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/img-process-base.scss" afterPath="$PROJECT_DIR$/src/css/img-process-base.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/img-process.js" afterPath="$PROJECT_DIR$/src/utils/img-process.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,56 +40,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StyleAdjust.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleAdjust.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2168">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#227#397#0" expanded="false" />
-                <element signature="e#420#536#0" expanded="false" />
-                <element signature="e#560#1392#0" expanded="false" />
-                <element signature="e#631#1363#0" expanded="false" />
-                <element signature="e#1411#2284#0" expanded="false" />
-                <element signature="e#2645#2840#0" expanded="false" />
-                <element signature="e#2866#2957#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StyleTransferResult.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/StyleTransferResult.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+            <state relative-caret-position="451">
+              <caret line="91" column="30" lean-forward="false" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
               <folding>
                 <element signature="e#49#75#0" expanded="true" />
-                <element signature="e#1113#1184#0" expanded="false" />
-                <element signature="e#1850#1915#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CropPane.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/CropPane.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="image-process.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/image-process.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="393" column="14" lean-forward="false" selection-start-line="393" selection-start-column="14" selection-end-line="393" selection-end-column="14" />
-              <folding>
-                <element signature="e#3866#4066#0" expanded="false" />
-                <element signature="e#4082#4766#0" expanded="false" />
+                <element signature="e#1148#1219#0" expanded="false" />
+                <element signature="e#1885#1950#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,22 +57,8 @@
       <file leaf-file-name="StyleCrop.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleCrop.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-143">
-              <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
-              <folding>
-                <element signature="e#49#74#0" expanded="true" />
-                <element signature="e#763#958#0" expanded="false" />
-                <element signature="e#984#1075#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StyleTransferProcess.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleTransferProcess.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+            <state relative-caret-position="297">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#49#74#0" expanded="true" />
               </folding>
@@ -110,54 +66,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FooterNav.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/FooterNav.js">
+      <file leaf-file-name="StyleMasker.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleMasker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaveStack.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/SaveStack.js">
+      <file leaf-file-name="img-process.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/img-process.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-8">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="82" column="2" lean-forward="true" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
               <folding>
-                <element signature="e#0#46#0" expanded="false" />
-                <element signature="n#!!block;n#push#0;n#SaveStack#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#redo#0;n#SaveStack#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#clear#0;n#SaveStack#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#clearAll#0;n#SaveStack#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#couldRedo#0;n#SaveStack#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#couldUndo#0;n#SaveStack#0;n#!!top" expanded="false" />
+                <element signature="e#109#635#0" expanded="false" />
+                <element signature="e#675#894#0" expanded="false" />
+                <element signature="e#2688#4772#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImagePane.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImagePane.js">
+      <file leaf-file-name="StyleAdjust.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleAdjust.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1304">
-              <caret line="5" column="42" lean-forward="true" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+            <state relative-caret-position="613">
+              <caret line="132" column="30" lean-forward="false" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
               <folding>
                 <element signature="e#49#74#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="34" column="55" lean-forward="false" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
-              <folding>
-                <element signature="e#47#73#0" expanded="true" />
-                <element signature="e#404#452#0" expanded="true" />
+                <element signature="e#227#397#0" expanded="false" />
+                <element signature="e#420#536#0" expanded="false" />
+                <element signature="e#560#1392#0" expanded="false" />
+                <element signature="e#631#1363#0" expanded="false" />
+                <element signature="e#2297#2416#0" expanded="false" />
+                <element signature="e#2436#2622#0" expanded="false" />
+                <element signature="e#2645#2840#0" expanded="false" />
+                <element signature="e#2866#2957#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -193,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/utils/processImg.js" />
         <option value="$PROJECT_DIR$/src/components/utils/Event.js" />
         <option value="$PROJECT_DIR$/src/components/utils/img-process.js" />
         <option value="$PROJECT_DIR$/src/components/utils/redo_undo.js" />
@@ -220,30 +166,31 @@
         <option value="$PROJECT_DIR$/src/components/StyleTransfer/CustomStyleTransfer.js" />
         <option value="$PROJECT_DIR$/src/components/ImageProcess/ImgProcessHead.js" />
         <option value="$PROJECT_DIR$/src/components/ImageProcess/ImgController.js" />
-        <option value="$PROJECT_DIR$/src/css/custom-style-transfer.scss" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/components/ImageProcess/ImageController.js" />
         <option value="$PROJECT_DIR$/src/css/style-trasfer.scss" />
         <option value="$PROJECT_DIR$/src/css/page-init.scss" />
-        <option value="$PROJECT_DIR$/src/utils/img-process.js" />
-        <option value="$PROJECT_DIR$/src/css/img-process-base.scss" />
-        <option value="$PROJECT_DIR$/src/components/ImageProcess/ImagePane.js" />
         <option value="$PROJECT_DIR$/src/css/toast.scss" />
         <option value="$PROJECT_DIR$/src/css/test.scss" />
         <option value="$PROJECT_DIR$/src/components/test/AnimateTest.js" />
-        <option value="$PROJECT_DIR$/src/components/com/Toast.js" />
         <option value="$PROJECT_DIR$/src/utils/redo_undo.js" />
-        <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleTransferProcess.js" />
         <option value="$PROJECT_DIR$/src/components/ImageProcess/ImageProcessHead.js" />
         <option value="$PROJECT_DIR$/src/utils/SaveStack.js" />
-        <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleAdjust.js" />
         <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleProcessPane.js" />
-        <option value="$PROJECT_DIR$/src/components/StyleTransfer/StyleTransferResult.js" />
         <option value="$PROJECT_DIR$/src/components/ImageProcess/FooterNav.js" />
-        <option value="$PROJECT_DIR$/src/components/App.js" />
-        <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleCrop.js" />
-        <option value="$PROJECT_DIR$/src/css/image-process.scss" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/components/com/Toast.js" />
         <option value="$PROJECT_DIR$/src/components/ImageProcess/CropPane.js" />
+        <option value="$PROJECT_DIR$/src/components/App.js" />
+        <option value="$PROJECT_DIR$/src/css/custom-style-transfer.scss" />
+        <option value="$PROJECT_DIR$/src/css/image-process.scss" />
+        <option value="$PROJECT_DIR$/src/css/img-process-base.scss" />
+        <option value="$PROJECT_DIR$/src/components/ImageProcess/ImagePane.js" />
+        <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleTransferProcess.js" />
+        <option value="$PROJECT_DIR$/src/components/StyleTransfer/StyleTransferResult.js" />
+        <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleAdjust.js" />
+        <option value="$PROJECT_DIR$/src/utils/img-process.js" />
+        <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleCrop.js" />
+        <option value="$PROJECT_DIR$/src/components/ImageProcess/StyleMasker.js" />
       </list>
     </option>
   </component>
@@ -337,6 +284,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="toocool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="toocool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -356,28 +321,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toocool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toocool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleTransfer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -527,12 +470,12 @@
       <workItem from="1502157153561" duration="14150000" />
       <workItem from="1502188995273" duration="7232000" />
       <workItem from="1502416404750" duration="6149000" />
-      <workItem from="1502803245883" duration="56042000" />
+      <workItem from="1502803245883" duration="91113000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231244000" />
+    <option name="totallyTimeSpent" value="266315000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,15 +488,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2473573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19309373" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2746988" sideWeight="0.50528544" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36144578" sideWeight="0.4947146" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.4947146" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -561,27 +505,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2746988" sideWeight="0.50528544" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1746988" sideWeight="0.4947146" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2473573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -591,50 +516,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/lib/touch-0.2.11.js" />
     <entry file="file://$PROJECT_DIR$/src/lib/touch.js" />
     <entry file="file://$PROJECT_DIR$/src/lib/touch-0.2.14.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="961" column="11" lean-forward="false" selection-start-line="961" selection-start-column="4" selection-end-line="961" selection-end-column="11" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#82#203#0" expanded="false" />
-            <element signature="e#282#374#0" expanded="false" />
-            <element signature="e#410#686#0" expanded="false" />
-            <element signature="e#738#792#0" expanded="false" />
-            <element signature="e#834#862#0" expanded="false" />
-            <element signature="e#897#936#0" expanded="false" />
-            <element signature="e#970#1433#0" expanded="false" />
-            <element signature="e#1470#1501#0" expanded="false" />
-            <element signature="e#1539#1941#0" expanded="false" />
-            <element signature="e#1985#2087#0" expanded="false" />
-            <element signature="e#2122#2172#0" expanded="false" />
-            <element signature="e#2216#2447#0" expanded="false" />
-            <element signature="e#2484#2552#0" expanded="false" />
-            <element signature="e#2592#2716#0" expanded="false" />
-            <element signature="e#2763#3049#0" expanded="false" />
-            <element signature="e#3088#3310#0" expanded="false" />
-            <element signature="e#3338#3527#0" expanded="false" />
-            <element signature="e#3563#3631#0" expanded="false" />
-            <element signature="e#3666#3760#0" expanded="false" />
-            <element signature="e#3787#4900#0" expanded="false" />
-            <element signature="e#4939#10403#0" expanded="false" />
-            <element signature="e#10419#10727#0" expanded="false" />
-            <element signature="e#10749#11545#0" expanded="false" />
-            <element signature="e#11570#11620#0" expanded="false" />
-            <element signature="e#12166#22776#0" expanded="false" />
-            <element signature="e#22817#24927#0" expanded="false" />
-            <element signature="e#24951#27357#0" expanded="false" />
-            <element signature="e#27382#29436#0" expanded="false" />
-            <element signature="e#29481#29816#0" expanded="false" />
-            <element signature="n#!!block;n#init#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -648,13 +540,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImageLabel.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImageProcess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/images/icon/web/logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -700,13 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/HeadNav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="15" column="120" lean-forward="false" selection-start-line="15" selection-start-column="120" selection-end-line="15" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/images/test/custom.png" />
     <entry file="file://$PROJECT_DIR$/src/images/test/p1.png">
       <provider selected="true" editor-type-id="images">
@@ -723,61 +601,15 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/images/icon/style/custom.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/StyleSelect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/StyleTransfer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#49#74#0" expanded="false" />
-            <element signature="e#420#452#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/style-trasfer.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
           <caret line="49" column="24" lean-forward="true" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/DrawIngBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="802">
-          <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -817,37 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImageController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="e#49#74#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/img-process-base.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/img-process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
-          <folding>
-            <element signature="e#109#635#0" expanded="false" />
-            <element signature="e#675#894#0" expanded="false" />
-            <element signature="e#2090#2571#0" expanded="false" />
-            <element signature="e#2624#4708#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/toast.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
@@ -860,14 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/CustomStyleTransfer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -885,35 +678,7 @@
         <state relative-caret-position="1080">
           <caret line="42" column="32" lean-forward="false" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
           <folding>
-            <element signature="e#48#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/custom-style-transfer.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/com/Toast.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="50" column="31" lean-forward="true" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-          <folding>
-            <marker date="1502961648000" expanded="true" signature="1482:1660" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImageProcessHead.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="25" column="58" lean-forward="false" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#48#74#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -942,6 +707,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/DrawIngBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/FooterNav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
@@ -950,58 +731,180 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/App.js">
+    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImageController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="34" column="55" lean-forward="false" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
+        <state relative-caret-position="324">
+          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImageProcess.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImageProcessHead.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="25" column="58" lean-forward="false" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/HeadNav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="15" column="120" lean-forward="false" selection-start-line="15" selection-start-column="120" selection-end-line="15" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/StyleSelect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/CustomStyleTransfer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding>
-            <element signature="e#47#73#0" expanded="true" />
-            <element signature="e#404#452#0" expanded="true" />
+            <element signature="e#49#74#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImagePane.js">
+    <entry file="file://$PROJECT_DIR$/src/components/com/Toast.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1304">
-          <caret line="5" column="42" lean-forward="true" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        <state relative-caret-position="243">
+          <caret line="32" column="65" lean-forward="false" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
           <folding>
-            <element signature="e#49#74#0" expanded="true" />
+            <marker date="1503199649000" expanded="true" signature="1870:2048" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/CropPane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="235" column="29" lean-forward="false" selection-start-line="235" selection-start-column="4" selection-end-line="235" selection-end-column="29" />
+          <folding>
+            <element signature="e#1633#2780#0" expanded="false" />
+            <element signature="e#2817#3478#0" expanded="false" />
+            <element signature="e#3501#4563#0" expanded="false" />
+            <element signature="e#5701#6000#0" expanded="false" />
+            <element signature="e#6031#6996#0" expanded="false" />
+            <marker date="1503214739000" expanded="false" signature="4589:5676" ph="{...}" />
+            <marker date="1503214739000" expanded="true" signature="7868:8153" ph="..." />
+            <marker date="1503214739000" expanded="true" signature="8101:8118" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleTransferProcess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+        <state relative-caret-position="540">
+          <caret line="26" column="75" lean-forward="false" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
           <folding>
-            <element signature="e#49#74#0" expanded="true" />
+            <element signature="e#401#449#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/img-process-base.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/image-process.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="393" column="14" lean-forward="false" selection-start-line="393" selection-start-column="14" selection-end-line="393" selection-end-column="14" />
+        <state relative-caret-position="189">
+          <caret line="74" column="19" lean-forward="true" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
           <folding>
-            <element signature="e#3866#4066#0" expanded="false" />
-            <element signature="e#4082#4766#0" expanded="false" />
+            <element signature="e#3868#4068#0" expanded="false" />
+            <element signature="e#4084#4768#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/custom-style-transfer.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/style-trasfer.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/ImagePane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="82" column="16" lean-forward="true" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
+          <folding>
+            <element signature="e#49#74#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/img-process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="82" column="2" lean-forward="true" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
+          <folding>
+            <element signature="e#109#635#0" expanded="false" />
+            <element signature="e#675#894#0" expanded="false" />
+            <element signature="e#2688#4772#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/StyleTransfer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <folding>
+            <element signature="e#420#452#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleAdjust.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2168">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="613">
+          <caret line="132" column="30" lean-forward="false" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
           <folding>
+            <element signature="e#49#74#0" expanded="true" />
             <element signature="e#227#397#0" expanded="false" />
             <element signature="e#420#536#0" expanded="false" />
             <element signature="e#560#1392#0" expanded="false" />
             <element signature="e#631#1363#0" expanded="false" />
-            <element signature="e#1411#2284#0" expanded="false" />
+            <element signature="e#2297#2416#0" expanded="false" />
+            <element signature="e#2436#2622#0" expanded="false" />
             <element signature="e#2645#2840#0" expanded="false" />
             <element signature="e#2866#2957#0" expanded="false" />
           </folding>
@@ -1010,32 +913,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/StyleTransfer/StyleTransferResult.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        <state relative-caret-position="451">
+          <caret line="91" column="30" lean-forward="false" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
           <folding>
             <element signature="e#49#75#0" expanded="true" />
-            <element signature="e#1113#1184#0" expanded="false" />
-            <element signature="e#1850#1915#0" expanded="false" />
+            <element signature="e#1148#1219#0" expanded="false" />
+            <element signature="e#1885#1950#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleCrop.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+        <state relative-caret-position="297">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="e#49#74#0" expanded="true" />
-            <element signature="e#763#958#0" expanded="false" />
-            <element signature="e#984#1075#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/CropPane.js">
+    <entry file="file://$PROJECT_DIR$/src/components/ImageProcess/StyleMasker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

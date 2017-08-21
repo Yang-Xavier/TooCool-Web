@@ -21,7 +21,7 @@ $bottomHeight : 6.875rem;
 
   .content-pane {
     width: 100%;
-    height: calc( 100% - #{$menuBtnWidth} );
+    height: calc( 100% - #{$menuBtnWidth} - 3.3rem);
     position: relative;
 
     > div {
@@ -31,6 +31,7 @@ $bottomHeight : 6.875rem;
       left: 0;
       top: 0;
       right: 0;
+      bottom: 0
     }
     img {
       width: inherit;

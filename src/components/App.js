@@ -4,7 +4,7 @@
 import React from 'react';
 import { Router , Route, IndexRoute, browserHistory} from 'react-router'
 import page_init_setting from '../utils/page-init';
-// import StyleTransfer from './StyleTransfer/StyleTransfer'
+import StyleTransfer from './StyleTransfer/StyleTransfer'
 import CustomStyleTransfer from './StyleTransfer/CustomStyleTransfer'
 // import StyleTransferProcess from './ImageProcess/StyleTransferProcess'
 import StyleCrop from './ImageProcess/StyleCrop'
@@ -32,7 +32,7 @@ export default class App extends React.Component {
     render() {
         return(
             <Router history={browserHistory}>
-                <Route path={"/"} components={StyleCrop}></Route>
+                <Route path={"/"} components={StyleTransferResult}></Route>
                 {/*<Route path={"/process"} components={}></Route>*/}
                 {/*<Route path={"/styletrans"} components={}></Route>*/}
                 {/*<Route path={"/stylecustom"} components={}></Route>*/}

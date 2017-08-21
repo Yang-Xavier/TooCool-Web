@@ -21,6 +21,7 @@ export default class StyleTransferResult extends React.Component {
 
         this.state = {
             pageIndex: 0,
+            originImg: result_img,
             showImg: result_img,
             historyStack: new SaveStack(10),
             couldRedo: false,
@@ -89,7 +90,9 @@ export default class StyleTransferResult extends React.Component {
                 break;
             case 2:
                 return <StyleCrop
-
+                    changePage={this.changePage}
+                    img={result_img}
+                    changeShowImg={this.changeShowImg}
                 />;
                 break;
             case 3:

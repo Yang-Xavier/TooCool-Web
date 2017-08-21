@@ -71,7 +71,7 @@ module.exports = {
         inline: true,
         port: 80,
         publicPath: '/static/',
-        host:'192.168.2.189',
-        // host:'192.168.31.207',
+        // host:'192.168.2.189',
+        host:'192.168.31.207',
     }
 };

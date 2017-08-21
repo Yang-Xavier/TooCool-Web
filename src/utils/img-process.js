@@ -87,18 +87,18 @@ export const crop = (img, x, y, width, height) => {
         throw '图片加载完成才能处理'
     }
     const cvs = document.createElement('canvas');
+    const newImg = document.createElement('img');
     const ctx = cvs.getContext('2d');
     cvs.width = width;
     cvs.height = height;
     ctx.drawImage(img, x, y, width, height, 0, 0, width, height);
-    img.src = cvs.toDataURL();
-
+    newImg.src = cvs.toDataURL();
     return new Promise(res => {
-        if(img.complete) {
-            res(img)
+        if(newImg.complete) {
+            res(newImg)
         } else {
-            img.onload = e => {
-                res(img);
+            newImg.onload = e => {
+                res(newImg);
             }
         }
     });

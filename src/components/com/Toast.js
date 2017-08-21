@@ -11,7 +11,8 @@ export default class Toast extends React.Component {
         super(props);
 
         this.state = {
-            timeId : null
+            timeId : null,
+            rmTimeId: null
         }
     }
 
@@ -25,6 +26,13 @@ export default class Toast extends React.Component {
                     this.refs['toast'].style.opacity = 0;
                 }, parseInt(this.props.showTime) * 1000)
             })
+            if(this.props.remove) {
+                this.setState({
+                    rmTimeId: setTimeout(() => {
+                        this.refs['toast'].remove();
+                    }, parseInt(this.props.showTime) * 1000 + 300)
+                })
+            }
         }
     }
 
@@ -50,6 +58,9 @@ export default class Toast extends React.Component {
     componentWillUnmount() {
         if(this.state.timeId) {
             clearTimeout(this.state.timeId);
+        }
+        if(this.state.rmTimeId) {
+            clearTimeout(this.state.rmTimeId)
         }
     }
 

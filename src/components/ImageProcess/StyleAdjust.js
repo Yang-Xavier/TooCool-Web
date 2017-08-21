@@ -121,7 +121,7 @@ export default class StyleAdjust extends React.Component {
                     />
                     <ImagePane
                         events={this.control_opacity()}
-                        style={{
+                        styles={{
                             display: this.state.isProtect? 'block' : 'none',
                             opacity: this.state.opacity
                         }}
@@ -130,7 +130,7 @@ export default class StyleAdjust extends React.Component {
                         img={this.props.protectImg}/>
                     <ImagePane
                         events={this.control_opacity()}
-                        style={{
+                        styles={{
                             display: !this.state.isProtect? 'block' : 'none',
                             opacity: this.state.opacity
                         }}
