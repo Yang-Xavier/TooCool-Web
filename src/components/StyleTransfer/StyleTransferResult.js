@@ -6,6 +6,7 @@ import React from 'react';
 import StyleTransferProcess from '../ImageProcess/StyleTransferProcess';
 import StyleAdjust from '../ImageProcess/StyleAdjust';
 import StyleCrop from '../ImageProcess/StyleCrop';
+import StyleMasker from '../ImageProcess/StyleMasker';
 
 import SaveStack from '../../utils/SaveStack'
 
@@ -96,7 +97,15 @@ export default class StyleTransferResult extends React.Component {
                 />;
                 break;
             case 3:
+                return <StyleMasker
+                    changePage={this.changePage}
+                    changeShowImg={this.changeShowImg}
+                    originImg={origin_img}
+                    resultImg={result_img}
+                />
                 break;
+            case 0:
+                return null;
         }
     }
 

@@ -2,8 +2,8 @@
 
 @mixin init-background-img {
   background-repeat: no-repeat;
-  background-size: 1.5rem;
-  background-position: center;
+  background-size: 1rem;
+  background-position: center ;
 }
 @mixin font {
   text-align: center;
@@ -70,12 +70,8 @@
   }
 
   .foot-nav {
-    //position: absolute;
     width: 100%;
     height: 3.3rem;
-    left: 0;
-    bottom: 0;
-    //z-index: 999;
     display: flex;
     justify-content: space-around;
     flex: {
@@ -113,10 +109,12 @@
         i{
           @include init-background-img;
           background-image: url('../images/icon/style/adjust.png');
-          right: 1rem;
+          left: 0;
+          right: 0;
         }
         label {
-          right: 1rem;
+          left: 0;
+          right: 0;
         }
       }
       &.icon-crop {
@@ -137,10 +135,12 @@
         i{
           @include init-background-img;
           background-image: url('../images/icon/style/apply.png');
-          left: 1rem;
+          left: 0;
+          right: 0;
         }
         label {
-          left: 1rem;
+          left: 0;
+          right: 0;
         }
       }
     }
@@ -197,7 +197,7 @@
       width: 100%;
       height: 2.125rem;
       text-align: center;
-      line-height: 2.125rem;
+      line-height: 2rem;
       padding-bottom: .6rem;
       @include font;
 
@@ -334,7 +334,7 @@
       .title {
         @include font;
         text-align: center;
-        line-height: 3.125rem;
+        line-height: 2.525rem;
         font-size: 1rem;
         flex: {
           grow: 3;
@@ -343,6 +343,7 @@
 
       .check {
         @include init-background-img;
+        background-size: 1.2rem;
         background-image: url("../images/icon/style/check.png");
         flex: {
           grow: 1;
@@ -386,6 +387,166 @@
       transition: all .3s ease;
     }
   }
+
+  .masker-pane {
+    canvas {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: inherit;
+      height: inherit;
+    }
+  }
+
+  .masker-tool {
+    overflow: visible;
+
+    .option {
+      display: flex;
+      flex: {
+        direction: row;
+        wrap: nowrap;
+      };
+      justify-content: space-between;
+      > div {
+        display: inline-block;
+        position: relative;
+
+        &:nth-child(1){
+          flex: {
+            grow: 2;
+          };
+        };
+        &:nth-child(3) {
+          flex: {
+            grow: 2;
+          };
+        };
+        &:nth-child(2) {
+          flex: {
+            grow: 6;
+          };
+
+          ul{
+            height: 2rem;
+            position: relative;
+            line-height: 2rem;
+
+            li {
+              border:1px solid #fff;
+              border-radius: 2rem;
+              margin: auto;
+              display: inline-block;
+              vertical-align: middle;
+
+              &.c1 {
+                width: 1.4rem;
+                height: 1.4rem;
+              }
+
+              &.l {
+                width: .4rem;
+                height: 0;
+              }
+
+              &.c2 {
+                width: 1.6rem;
+                height: 1.6rem;
+              }
+
+
+              &.c3 {
+                width: 1.8rem;
+                height: 1.8rem;
+              }
+
+              &.animated {
+                animation-duration: .3s;
+                animation-fill-mode: both;
+              }
+
+              &.rubberBand {
+                box-shadow: 0 0 20px #24C4C9 ;
+              }
+            }
+          }
+        }
+      }
+
+      .flux {
+
+        margin-left: 1rem;
+
+        .label{
+          height: 1rem;
+          text-align: center;
+          line-height: 1rem;
+
+          span {
+            vertical-align: middle;
+            font-size: .8rem;
+            display: inline-block;
+            margin: 0;
+            height: inherit;
+            line-height: 1rem;
+
+            &:nth-child(1) {
+              width: 5rem;
+              text-align: end;
+            }
+
+            &:nth-child(2) {
+              text-align: start;
+              width: 2.4rem;
+            }
+          }
+        }
+
+        .select {
+          position: relative;
+          line-height: 1rem;
+          height: 1rem;
+
+          div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: #fff;
+            border-radius: 1rem;
+
+            &.road{
+              left: 0;
+              right: 0;
+              border-radius: 1rem;
+              outline: #fff solid 1px;
+              height: 0;
+              line-height: 0;
+              width: 80%;
+            }
+
+            &.btn {
+              width: 1rem;
+              height: 1rem;
+              background: #fff;
+              border-radius: 1rem;
+              z-index: 999;
+            }
+
+          }
+        }
+
+        .selected {
+          color: #24C4C9;
+
+        }
+      }
+
+    }
+  }
 }
 
 
@@ -405,4 +566,39 @@
     transform: translateX(100%);
     transition: all .4s linear;
   }
+}
+
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubberBand {
+  animation-name: rubberBand;
 }

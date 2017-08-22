@@ -89,6 +89,7 @@ export default class CanvasTest extends React.Component {
     }
 
     componentDidMount() {
+
     }
 
     render() {

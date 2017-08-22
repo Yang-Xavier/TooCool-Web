@@ -66,12 +66,17 @@ export default class ImagePane extends React.Component {
         }
         if(this.props.postScale) {
             if (this.refs['img'].complete) {
-                let scale = this.refs['img'].offsetWidth / this.refs['img'].naturalWidth;
-                this.props.postScale(scale);
-            }
-            this.refs['img'].onload = e => {
-                let scale = this.refs['img'].offsetWidth / this.refs['img'].naturalWidth;
-                this.props.postScale(scale);
+                setTimeout(() => {
+                    this.props.postScale(this.refs['img'].offsetWidth / this.refs['img'].naturalWidth);
+                    this.props.postImgNode && this.props.postImgNode(this.refs['img']);
+                },0)
+            } else {
+                this.refs['img'].onload = e => {
+                    setTimeout(() => {
+                        this.props.postScale(this.refs['img'].offsetWidth / this.refs['img'].naturalWidth);
+                        this.props.postImgNode && this.props.postImgNode(this.refs['img']);
+                    },0)
+                }
             }
         }
 

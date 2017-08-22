@@ -26,7 +26,7 @@ export default class DrawIngBoard extends React.Component {
             cvs: cvs,
             ctx: ctx
         });
-        this.props.getCanvas && this.props.getCanvas(cvs,ctx);
+        this.props.postCanvas && this.props.postCanvas(cvs,ctx);
         if(this.props.draw) {
             if(this.props.draw.x) {
                 this.drawing(this.props.draw.img, this.props.draw.x, this.props.draw.y)
@@ -38,9 +38,8 @@ export default class DrawIngBoard extends React.Component {
     }
 
     drawing(img) {
-        const x = (this.state.cvs.width - img.width) / 2;
-        const y = (this.state.cvs.height - img.height) / 2;
-
+        const x = (this.state.cvs.width - img.width) ;
+        const y = (this.state.cvs.height - img.height) ;
         this.state.ctx.drawImage(img, x, y);
     }
 
