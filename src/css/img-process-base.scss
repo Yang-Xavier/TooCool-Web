@@ -16,10 +16,10 @@ $bottomHeight : 6.875rem;
   .head-nav {
     width: 100%;
     flex: {
-      grow: 1;
       direction: row;
       wrap: nowrap;
     };
+    height: 4.5rem;
     display: flex;
     box-sizing: border-box;
     padding-top: 1rem;
@@ -56,17 +56,19 @@ $bottomHeight : 6.875rem;
     width: 100%;
     display: flex;
     flex: {
-      grow: 1;
       direction: row;
       wrap: nowrap;
     };
     justify-content: space-between;
+    height: 3.125rem;
+
   }
 
   .btn {
     display: flex;
     flex: {
       grow: 1;
+
       direction: column;
     };
   }

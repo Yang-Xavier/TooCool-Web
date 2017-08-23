@@ -47,7 +47,8 @@ export default class StyleTransferResult extends React.Component {
 
     changeShowImg(img) {
         this.setState({
-            showImg : img
+            showImg : img,
+            hadCrop: false
         },() => {
             this.state.historyStack.push(this.state.showImg);
         })
@@ -105,6 +106,7 @@ export default class StyleTransferResult extends React.Component {
                     changePage={this.changePage}
                     img={this.state.showImg}
                     changeShowImg={this.changeShowImg}
+                    hadCrop={() => {this.setState({hadCrop: true})}}
                 />;
                 break;
             case 0:

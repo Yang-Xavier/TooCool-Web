@@ -42,7 +42,6 @@ export default class StyleCrop extends React.Component {
         originImg.src = this.props.img;
         return new Promise(res => {
             originImg.onload = e => {
-                console.log(this.state.cropPaneInfo)
                 crop(
                     originImg,
                     (this.state.cropPaneInfo.offsetX / this.state.scale).toFixed(2),
@@ -52,6 +51,7 @@ export default class StyleCrop extends React.Component {
                 )
                     .then( img => {
                         this.props.changeShowImg(img.src);
+                        this.props.hadCrop();
                         res();
                     })
             }

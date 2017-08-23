@@ -6,7 +6,7 @@ import { Router , Route, IndexRoute, browserHistory} from 'react-router'
 import page_init_setting from '../utils/page-init';
 // import StyleTransfer from './StyleTransfer/StyleTransfer'
 // import CustomStyleTransfer from './StyleTransfer/CustomStyleTransfer'
-// import StyleMasker from './ImageProcess/StyleMasker'
+import StyleMasker from './StyleTransfer/StyleMasker'
 // import StyleTransferProcess from './ImageProcess/StyleTransferProcess'
 
 import StyleTransferResult from './StyleTransfer/StyleTransferResult'

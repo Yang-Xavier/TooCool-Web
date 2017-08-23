@@ -167,7 +167,7 @@ export default class StyleMasker extends React.Component {
     ctxInit() {
         this.state.ctx.clearRect(0, 0, this.state.cvs.width, this.state.cvs.height);
         const img = document.createElement('img');
-        img.src = this.props.resultImg;
+        img.src = result_img//this.props.resultImg;
         img.onload = e => {
             this.state.ctx.drawImage(img,0 ,0)
         }
@@ -243,7 +243,6 @@ export default class StyleMasker extends React.Component {
                     <div className="option">
                         <div className="title flux">
                             <div className="label">
-                                <span>画笔流量：</span>
                                 <span>{`${parseFloat(this.state.fluxInfo.percent)}%`}</span>
                             </div>
                             <div ref="select-btn" className="select">
@@ -260,15 +259,28 @@ export default class StyleMasker extends React.Component {
                             <ul>
                                 <li
                                     onTouchStart={e => {this.changePointSize(1)}}
-                                    className={`c1 animated ${this.state.pointSize == 1 ? 'rubberBand' : ''}`}/>
-                                <li className="l"/>
+                                    className={`c1 ${this.state.pointSize == 1 ? 'animated' : ''}`}>
+                                    <div/>
+                                    <i/>
+                                </li>
                                 <li
                                     onTouchStart={e => {this.changePointSize(2)}}
-                                    className={`c2 animated ${this.state.pointSize == 2 ? 'rubberBand' : ''}`}/>
-                                <li className="l"/>
+                                    className={`c2 ${this.state.pointSize == 2 ? 'animated' : ''}`}>
+                                    <div/>
+                                    <i/>
+                                </li>
                                 <li
                                     onTouchStart={e => {this.changePointSize(3)}}
-                                    className={`c3 animated ${this.state.pointSize == 3 ? 'rubberBand' : ''}`}/>
+                                    className={`c3 ${this.state.pointSize == 3 ? 'animated' : ''}`}>
+                                    <div/>
+                                    <i/>
+                                </li>
+                                <li
+                                    onTouchStart={e => {this.changePointSize(4)}}
+                                    className={`c4 ${this.state.pointSize == 4 ? 'animated' : ''}`}>
+                                    <div/>
+                                    <i/>
+                                </li>
                             </ul>
                         </div>
                         <div>
