@@ -13,7 +13,6 @@ const page_init_setting = () => {
     };
 
 
-    document.body.style.height = screen.height + 'px';
     document.addEventListener('touchmove', preventDefault, false);
     document.body.addEventListener('touchmove', function (ev) {
         const target = ev.target;

@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import StyleTransferProcess from '../ImageProcess/StyleTransferProcess';
-import StyleAdjust from '../ImageProcess/StyleAdjust';
-import StyleCrop from '../ImageProcess/StyleCrop';
-import StyleMasker from '../ImageProcess/StyleMasker';
+import StyleTransferProcess from './StyleTransferProcess';
+import StyleAdjust from './StyleAdjust';
+import StyleCrop from './StyleCrop';
+import StyleMasker from './StyleMasker';
 
 import SaveStack from '../../utils/SaveStack'
 
@@ -22,11 +22,14 @@ export default class StyleTransferResult extends React.Component {
 
         this.state = {
             pageIndex: 0,
-            originImg: result_img,
+            originImg: origin_img,
+            resultImg: result_img,
             showImg: result_img,
+            protectImg: protect_img,
             historyStack: new SaveStack(10),
             couldRedo: false,
             couldUndo: false,
+            hadCrop: false
         };
 
         this.changePage = this.changePage.bind(this);
@@ -83,26 +86,26 @@ export default class StyleTransferResult extends React.Component {
             case 1:
                 return <StyleAdjust
                     changePage={this.changePage}
-                    originImg={origin_img}
-                    resultImg={result_img}
-                    protectImg={protect_img}
+                    originImg={this.state.originImg}
+                    resultImg={this.state.hadCrop? this.state.resultImg:this.state.showImg}
+                    protectImg={this.state.protectImg}
                     changeShowImg={this.changeShowImg}
                 />;
                 break;
             case 2:
-                return <StyleCrop
-                    changePage={this.changePage}
-                    img={result_img}
-                    changeShowImg={this.changeShowImg}
-                />;
-                break;
-            case 3:
                 return <StyleMasker
                     changePage={this.changePage}
                     changeShowImg={this.changeShowImg}
-                    originImg={origin_img}
-                    resultImg={result_img}
+                    originImg={this.state.originImg}
+                    resultImg={this.state.hadCrop? this.state.resultImg:this.state.showImg}
                 />
+                break;
+            case 3:
+                return <StyleCrop
+                    changePage={this.changePage}
+                    img={this.state.showImg}
+                    changeShowImg={this.changeShowImg}
+                />;
                 break;
             case 0:
                 return null;

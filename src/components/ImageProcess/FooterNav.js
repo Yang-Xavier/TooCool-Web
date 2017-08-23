@@ -16,16 +16,16 @@ export default class FooterNav extends React.Component {
         return(
             <div className="foot-nav">
                 <div  onTouchStart={e => this.props.changePage(1)}  className="btn icon-adjust">
-                    <i />
-                    <label>调整</label>
+                    <section/>
+                    <section>调整</section>
                 </div>
-                <div onTouchStart={e => this.props.changePage(2)} className="btn icon-crop">
-                    <i />
-                    <label>裁剪</label>
+                <div onTouchStart={e => this.props.changePage(2)} className="btn icon-paint">
+                    <section />
+                    <section>涂抹</section>
                 </div>
-                <div onTouchStart={e => this.props.changePage(3)} className="btn icon-paint">
-                    <i />
-                    <label>涂抹</label>
+                <div onTouchStart={e => this.props.changePage(3)} className="btn icon-crop">
+                    <section />
+                    <section>裁剪</section>
                 </div>
             </div>
         )

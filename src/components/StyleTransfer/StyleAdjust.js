@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import ImagePane from './ImagePane'
+import ImagePane from '../ImageProcess/ImagePane'
 import Toast from '../com/Toast'
 
 export default class StyleAdjust extends React.Component {
@@ -179,5 +179,5 @@ export default class StyleAdjust extends React.Component {
             </div>
         )
     }
-
 }
+

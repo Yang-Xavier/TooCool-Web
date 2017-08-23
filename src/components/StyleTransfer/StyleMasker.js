@@ -3,8 +3,8 @@
  */
 
 import React from 'react'
-import ImagePane from './ImagePane'
-import DrawImgBoard from './DrawIngBoard'
+import ImagePane from '../ImageProcess/ImagePane'
+import DrawImgBoard from '../ImageProcess/DrawIngBoard'
 import touch from 'touchjs'
 
 import origin_img from '../../images/test/p1.png'

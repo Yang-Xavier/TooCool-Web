@@ -3,9 +3,9 @@
  */
 
 import React from 'react'
-import ImageProcessHead from './ImageProcessHead'
-import FooterNav from './FooterNav'
-import ImagePane from './ImagePane'
+import ImageProcessHead from '../ImageProcess/ImageProcessHead'
+import FooterNav from '../ImageProcess/FooterNav'
+import ImagePane from '../ImageProcess/ImagePane'
 import '../../css/image-process.scss'
 
 export default class StyleTransferProcess extends React.Component {
@@ -24,7 +24,6 @@ export default class StyleTransferProcess extends React.Component {
                     clear={this.props.clear}
                 />
                 <ImagePane
-                    styles = {{height: `calc(100% - 2.75rem - 3.3rem - 1rem`}}
                     img = {this.props.showImg}
                     height = { screen.height - 120}
                 />

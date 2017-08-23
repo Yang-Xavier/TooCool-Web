@@ -11,7 +11,9 @@ export default class ImagePane extends React.Component {
         this.state = {
             img: null,
             width: 0,
-            height: 0
+            height: 0,
+            max_height: 0,
+            max_width: 0
         }
     }
 
@@ -38,7 +40,7 @@ export default class ImagePane extends React.Component {
         const img = document.createElement('img');
         img.src = nextProps.img;
         img.onload = e => {
-            const wh = this.resize(img, this.props.width, this.props.height);
+            const wh = this.resize(img, this.state.max_width, this.state.max_height);
             this.setState({
                 img: this.props.img,
                 width: wh.width,
@@ -48,21 +50,34 @@ export default class ImagePane extends React.Component {
     }
 
     componentWillMount() {
-        const img = document.createElement('img');
-        img.src = this.props.img;
-        img.onload = e => {
-            const wh = this.resize(img, this.props.width, this.props.height);
-            this.setState({
-                img: this.props.img,
-                width: wh.width,
-                height: wh.height
-            })
-        }
+
     }
 
     componentDidMount() {
         for(let key in this.props.events) {
             touch.on(this.refs['img_label'], key, this.props.events[key])
+        }
+        const contentPane = this.refs["content-pane"];
+        let mw = contentPane.offsetWidth,
+            mh = contentPane.offsetHeight;
+        if(mw == 0 || mh ==0) {
+            mh = contentPane.parentElement.offsetHeight
+            mw = contentPane.parentElement.offsetWidth
+        }
+        this.setState({
+            max_width: mw,
+            max_height: mh
+        });
+
+        const img = document.createElement('img');
+        img.src = this.props.img;
+        img.onload = e => {
+            const wh = this.resize(img, this.state.max_width, this.state.max_height);
+            this.setState({
+                img: this.props.img,
+                width: wh.width,
+                height: wh.height
+            })
         }
         if(this.props.postScale) {
             if (this.refs['img'].complete) {
@@ -86,7 +101,7 @@ export default class ImagePane extends React.Component {
         const styles = this.props.styles || {};
 
         return (
-            <div style={styles} className={this.props.className || "content-pane"}>
+            <div ref={"content-pane"} style={styles} className={this.props.className || "content-pane"}>
                 <div
                     ref="img_label"
                     style={{

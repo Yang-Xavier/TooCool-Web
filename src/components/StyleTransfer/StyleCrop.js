@@ -3,9 +3,9 @@
  */
 
 import React from 'react'
-import ImagePane from './ImagePane'
+import ImagePane from '../ImageProcess/ImagePane'
 import Toast from '../com/Toast'
-import CropPane from './CropPane'
+import CropPane from '../ImageProcess/CropPane'
 import {crop} from '../../utils/img-process'
 
 import result_img from '../../images/test/guichu.png'
