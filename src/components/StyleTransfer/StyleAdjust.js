@@ -3,8 +3,16 @@
  */
 
 import React from 'react'
-import ImagePane from '../ImageProcess/ImagePane'
+import ImagePane from './ImagePane'
 import Toast from '../com/Toast'
+import WorkPane from './WorkPane'
+import FooterNav from '../com/FooterNav'
+import FooterBar from '../com/FooterBar'
+import WaitingAnimation from '../com/WaitingAnimation'
+
+
+import api from '../../utils/API'
+import {ajax} from '../../utils/Network'
 
 export default class StyleAdjust extends React.Component {
     constructor(props) {
@@ -13,15 +21,75 @@ export default class StyleAdjust extends React.Component {
             isProtect: false,
             opacity: 1,
             load: false,
-            isModifiy: false
+            isModifiy: false,
+            didMount: false,
+            waiting: false,
+            protectImg: props.protectImg
         }
+
+        this.pollingTime = 500;
     }
 
     switch_protect() {
-        this.setState({
-            isProtect: !this.state.isProtect,
-            isModifiy: true
+        if(!this.props.protectImg) {
+            this.setState({
+                waiting: true
+            });
+            this.getProtectImg();
+        } else {
+            this.setState({
+                isProtect: !this.state.isProtect,
+                isModifiy: true
+            })
+        }
+
+    }
+
+    getProtectImg() {
+        const data = [];
+
+        data.push(`originalPic=${this.props.originImg}`);
+        data.push(`renderPic=${this.props.resultImg}`);
+
+        const option = {
+            method: 'post',
+            url: api.protectColor,
+            data: data.join('&'),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+
+        ajax(option).then(result => {
+            this.pollingAsk(result.data.id)
+                .then((result) => {
+                    this.props.changeImg('protectImg',result);
+                    this.setState({
+                        waiting: false,
+                        isProtect: true,
+                        isModifiy: true,
+                        protectImg: result
+                    })
+                })
         })
+    }
+
+    pollingAsk(taskId) {
+        let timerId = null;
+        const pollingFun = (res) => {
+            const option = {
+                url: `${api.queryTask}${taskId}`
+            };
+            ajax(option).then( result => {
+                if(result.data) {
+                    clearInterval(timerId);
+                    res(result.data.result);
+                }
+            });
+        };
+        return new Promise( res => {
+            timerId = setInterval(() => pollingFun(res), this.pollingTime);
+        });
     }
 
     control_opacity() {
@@ -97,7 +165,9 @@ export default class StyleAdjust extends React.Component {
 
     forwardAnimate() {
         return new Promise(res => {
-            this.refs['pane'].style.transform = `translateX(100%)`;
+            this.setState({
+                didMount: false
+            })
             setTimeout(() => {
                 res();
             },600)
@@ -105,66 +175,79 @@ export default class StyleAdjust extends React.Component {
     }
 
     componentDidMount() {
-        setTimeout(() => {this.refs['pane'].style.transform = `translateX(0px)`},0)
+        setTimeout(() => {
+            this.setState({
+                didMount: true
+            })
+        },0);
+
     }
 
     render() {
-        const animateStyle = {transform : `translateX(100%)`,transition:`all .4s linear`};
 
         return(
-            <div style={animateStyle} ref="pane" className="style-process-pane">
-                <div className="image-label">
-                    <ImagePane
-                        height = { screen.height - 120}
+            <div ref="pane" className={`style-process-pane adjust ${this.state.didMount? "enter" : ""}`}>
+                <div className="images-label">
+                    <WorkPane>
+                        <ImagePane
                         img={this.props.originImg}
-                        className="content-pane mask"
-                    />
-                    <ImagePane
-                        events={this.control_opacity()}
                         styles={{
-                            display: this.state.isProtect? 'block' : 'none',
-                            opacity: this.state.opacity
+                            zIndex: 1
                         }}
-                        height = { screen.height - 120}
-                        className="content-pane mask"
-                        img={this.props.protectImg}/>
-                    <ImagePane
-                        events={this.control_opacity()}
-                        styles={{
-                            display: !this.state.isProtect? 'block' : 'none',
-                            opacity: this.state.opacity
-                        }}
-                        height = { screen.height - 120}
-                        className="content-pane mask"
-                        img={this.props.resultImg}/>
-
+                        />
+                    </WorkPane>
+                    <WorkPane>
+                        <ImagePane
+                            events={this.control_opacity()}
+                            styles={{
+                                display: this.state.isProtect? 'block' : 'none',
+                                opacity: this.state.opacity,
+                                zIndex: 999
+                            }}
+                            img={this.props.protectImg}
+                        />
+                    </WorkPane>
+                    <WorkPane>
+                        <ImagePane
+                            events={this.control_opacity()}
+                            styles={{
+                                display: !this.state.isProtect? 'block' : 'none',
+                                opacity: this.state.opacity,
+                                zIndex: 999
+                            }}
+                            height = { screen.height - 120}
+                            className="content-pane mask"
+                            img={this.props.resultImg}/>
+                    </WorkPane>
                 </div>
-                <div className="tool-bar">
-                    <div className="option">
-                        <span className="switch">
+                <FooterNav>
+                    <FooterBar>
+                        <div className = {`switch ${this.state.isProtect? 'on' : 'off'}`}>
                             <section
                                 onTouchStart={e => this.switch_protect()}
-                                style={{transform: `translateX(${this.state.isProtect? 1.5 : 0}rem)`}}
                                 className="switch-btn">
-                                {this.state.isProtect ? 'on' : 'off'}
+                                {this.state.isProtect ? 'ON' : 'OFF'}
                             </section>
-                            <sectoin className="switch-road"/>
-                        </span>
-                        <span className="title">颜色保护</span>
-                    </div>
-                    <div className="menu">
-                        <span onTouchStart={e => {this.back();}} className="forward"/>
-                        <span className="title">调整</span>
-                        <span onTouchStart={e => {
+                            <sectoin className="switch-road">
+                                <section className="bg"/>
+                            </sectoin>
+                        </div>
+                        <div className="title">颜色保护</div>
+                    </FooterBar>
+
+                    <ul className="transfer-items">
+                        <li onTouchStart={e => {this.back();}} className="btn icon-back"/>
+                        <li className="title">调整</li>
+                        <li onTouchStart={e => {
                             if(this.state.isModifiy) {
                                 this.saveAndBack();
                             } else {
                                 this.back();
                             }
 
-                        }} className="check"/>
-                    </div>
-                </div>
+                        }} className="btn icon-check"/>
+                    </ul>
+                </FooterNav>
                 <Toast
                     msg="左右滑动试试看"
                     showTime="2"
@@ -176,6 +259,7 @@ export default class StyleAdjust extends React.Component {
                     showTime="2"
                     bottom="8rem"
                 />
+                {this.state.waiting && <WaitingAnimation/>}
             </div>
         )
     }

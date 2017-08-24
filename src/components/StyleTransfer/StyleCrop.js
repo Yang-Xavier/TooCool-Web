@@ -3,32 +3,24 @@
  */
 
 import React from 'react'
-import ImagePane from '../ImageProcess/ImagePane'
+import ImagePane from './ImagePane'
 import Toast from '../com/Toast'
-import CropPane from '../ImageProcess/CropPane'
+import CropPane from '../com/CropPane'
+import WorkPane from './WorkPane'
+import FooterNav from '../com/FooterNav'
+import FooterBar from '../com/FooterBar'
+
 import {crop} from '../../utils/img-process'
-
-import result_img from '../../images/test/guichu.png'
-import protect_img from '../../images/test/IMG_3793.JPG'
-
-
-
-const CropType = {
-    one_one: 0,
-    two_one: 1,
-    four_three: 2,
-    five_three: 3,
-    three_five: 4
-};
 
 export default class StyleCrop extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            cropType: null,
+            cropType: -1,
             cropPaneInfo: {},
             scale: 0,
+            didMount: false,
             isModifiy: false
         };
 
@@ -104,7 +96,9 @@ export default class StyleCrop extends React.Component {
     }
 
     componentDidMount() {
-        setTimeout(() => {this.refs['pane'].style.transform = `translateX(0px)`},0)
+        this.setState({
+            didMount: true
+        })
     }
 
     render() {
@@ -113,34 +107,33 @@ export default class StyleCrop extends React.Component {
         const cropSelect = (
             <ul className="crop-select">
                 <li
-                    className={this.state.cropType == CropType.one_one? 'choice':''}
-                    onTouchStart={e => this.changeCropPane(CropType.one_one)}
-                ><i/><span>1:1</span></li>
+                    className={this.state.cropType == 0? 'choice':''}
+                    onTouchStart={e => {this.changeCropPane(0)}}
+                ><i/><label>1:1</label></li>
                 <li
-                    className={this.state.cropType == CropType.two_one? 'choice':''}
-                    onTouchStart={e => this.changeCropPane(CropType.two_one)}
-                ><i/><span>1:2</span></li>
+                    className={this.state.cropType == 1? 'choice':''}
+                    onTouchStart={e => {this.changeCropPane(1)}}
+                ><i/><label>1:2</label></li>
                 <li
-                    className={this.state.cropType == CropType.four_three? 'choice':''}
-                    onTouchStart={e => this.changeCropPane(CropType.four_three)}
-                ><i/><span>4:3</span></li>
+                    className={this.state.cropType == 2? 'choice':''}
+                    onTouchStart={e => {this.changeCropPane(2)}}
+                ><i/><label>4:3</label></li>
                 <li
-                    className={this.state.cropType == CropType.five_three? 'choice':''}
-                    onTouchStart={e => this.changeCropPane(CropType.five_three)}
-                ><i/><span>5:3</span></li>
+                    className={this.state.cropType == 3? 'choice':''}
+                    onTouchStart={e => {this.changeCropPane(3)}}
+                ><i/><label>5:3</label></li>
                 <li
-                    className={this.state.cropType == CropType.three_five? 'choice':''}
-                    onTouchStart={e => this.changeCropPane(CropType.three_five)}
-                ><i/><span>3:5</span></li>
+                    className={this.state.cropType == 4? 'choice':''}
+                    onTouchStart={e => {this.changeCropPane(4)}}
+                ><i/><label>3:5</label></li>
             </ul>
         );
 
 
         return(
-            <div style={animateStyle} ref="pane" className="style-process-pane">
-                <div className="image-label">
+            <div ref="pane" className={`style-process-pane crop ${this.state.didMount? "enter" : ""}`}>
+                <WorkPane className="image-label">
                     <ImagePane
-                        height = { screen.height - 120}
                         img = {this.props.img}
                         className = "content-pane mask"
                         postScale = {this.setScale}>
@@ -148,23 +141,23 @@ export default class StyleCrop extends React.Component {
                             setCropPaneInfo = {this.setCropPaneInfo}
                             cropType = {this.state.cropType}/>
                     </ImagePane>
-                </div>
-                <div className="tool-bar">
-                    <div className="option">
+                </WorkPane>
+                <FooterNav >
+                    <FooterBar >
                         {cropSelect}
-                    </div>
-                    <div className="menu">
-                        <span onTouchStart = {e => {this.back();}} className="forward"/>
-                        <span className="title">裁剪</span>
-                        <span onTouchStart={e => {
+                    </FooterBar>
+                    <ul className="transfer-items">
+                        <li onTouchStart = {e => {this.back();}} className="btn icon-back"/>
+                        <li className="title">裁剪</li>
+                        <li onTouchStart={e => {
                             if(this.state.isModifiy) {
                                 this.saveAndBack();
                             } else {
                                 this.back();
                             }
-                        }} className="check"/>
-                    </div>
-                </div>
+                        }} className="btn icon-check"/>
+                    </ul>
+                </FooterNav>
                 <Toast
                     msg="请选择一个尺寸"
                     bottom="7rem"

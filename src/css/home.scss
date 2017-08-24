@@ -1,0 +1,87 @@
+@mixin icon-background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+}
+
+@mixin font {
+  text-align: center;
+  color: #fff;
+  font: {
+    family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", \5fae\8f6f\96c5\9ed1, "WenQuanYi Micro Hei", \5b8b\4f53, sans-serif;
+    weight: 300;
+    size: .75rem;
+  }
+  line-height: 2;
+};
+
+.main-pane {
+  &.simple {
+
+    align-items: center;
+    justify-content: center;
+
+    .select-file-pane {
+      button {
+        padding: 0;
+        border: none;
+        background: #55585A;
+        display: flex;
+        width: 8rem;
+        height: 8rem;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          flex: 1 1 100%;
+          display: block;
+          width: inherit;
+          position: relative;
+
+          &:after,
+          &:before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            width: 40%;
+            height: .5rem;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: #fff;
+            opacity: .8;
+            border-radius: 3px;
+          }
+
+          &:after {
+            transform: rotate(90deg);
+          }
+        }
+
+        label {
+          @include font;
+          flex: 0 0 3rem;
+          font-size: 1rem;
+          width: inherit;
+          display: block;
+        }
+      }
+
+      input {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        opacity: 0;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        display: block;
+      }
+    }
+  }
+
+}

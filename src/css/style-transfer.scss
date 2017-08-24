@@ -1,0 +1,291 @@
+@mixin icon-background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+}
+
+@mixin font {
+  text-align: center;
+  color: #fff;
+  font: {
+    family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", \5fae\8f6f\96c5\9ed1, "WenQuanYi Micro Hei", \5b8b\4f53, sans-serif;
+    weight: 300;
+    size: .75rem;
+  }
+  line-height: 2;
+};
+
+$NavHeight: 3.125rem;
+$BackColor: #171717;
+$NavColor: #282826;
+
+.main-pane {
+  justify-content: space-between;
+  position: relative;
+
+  .header-nav {
+    display: flex;
+    flex: 0 0 $NavHeight;
+    padding-top: 1rem;
+
+    ul {
+      width: 100%;
+      display: flex;
+      height: $NavHeight;
+      justify-content: space-between;
+      box-sizing: border-box;
+
+      li {
+        flex: 0 1 $NavHeight;
+        height: inherit;;
+        i {
+          display: block;
+          width: $NavHeight;
+          height: inherit;
+          @include icon-background;
+
+          &.icon-back {
+            background-image: url('../images/icon/style/back.png');
+            margin-left: 1rem;
+          }
+
+          &.icon-next {
+            background-image: url('../images/icon/style/forward.png');
+            margin-right: 1rem;
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    flex: 0 1 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    position: relative;
+
+    .title {
+      @include font;
+      width: 100%;
+      font-size: 1.25rem;
+      flex: 0 0 2rem;
+
+    }
+
+    .origin-label {
+      flex: 0 1 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .image-select {
+        flex: 0 1 8rem;
+        height: 8rem;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+
+        .img-block {
+          display: inline-block;
+          width: 6rem;
+          height: 6rem;
+          background-color: #fff;
+          background: {
+            position: center;
+            repeat: no-repeat;
+            size: cover;
+          };
+          position: relative;
+
+          input[type=file] {
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+          }
+
+          img {
+            width: inherit;
+            height: inherit;
+          }
+        }
+
+        .icon {
+          display: inline-block;
+          width: 4rem;
+          height: 8rem;
+
+          &.plus {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-image: url('../images/icon/style/plus.png');
+          }
+        }
+      }
+
+      .info-label {
+        flex: 0 1 8rem;
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+
+        .btn {
+          width: 8rem;
+          height: 2.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          &.option {
+            background: #4abdc2;
+            border-radius: .3rem;
+            @include font;
+            font-size: .8rem;
+          }
+
+          i.icon-home {
+            flex: 0 0 50%;
+            @include icon-background;
+            background-image: url('../images/icon/style/home_page.png');
+          }
+
+          label {
+            flex: 0 0 50%;
+          }
+        }
+        .info-bar {
+          width: 100%;
+          margin-top: 1rem;
+          height: 1rem;
+          @include font;
+          font-size: .8rem;
+        }
+
+      }
+
+    }
+
+    .back-home-label {
+      height: 40%;
+      flex: 0 1 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .go-home {
+        flex: 0 0 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+          background: #55585A;
+          border-radius: .3rem;
+          @include font;
+          font-size: .8rem;
+          flex: 0 0 5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 8rem;
+          width: 8rem;
+
+          i.icon-home {
+            width: 100%;
+            flex: 0 1 50%;
+            display: block;
+            @include icon-background;
+            background-image: url('../images/icon/style/home_page.png');
+            background-position: bottom;
+            margin: .2rem 0;
+
+          }
+
+          label {
+            flex: 0 1 50%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: .2rem 0;
+          }
+        }
+
+        .slogan {
+          @include font;
+          color: #A19FA2;
+          font-size: .8rem;
+          position: relative;
+          width: 15rem;
+          margin: 3rem auto 0 auto;
+
+          &:before,
+          &:after{
+            content: ' ';
+            width: 3rem;
+            height: 1px;
+            background: #A19FA2;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+          }
+
+          &:before {
+            left: 0;
+          }
+
+          &:after {
+            right: 0;
+          }
+
+        }
+      }
+    }
+  }
+
+  .footer-nav {
+
+    .select-style-label {
+      flex: 0 1 6.875rem;
+      overflow: hidden;
+      height: 6.875rem;
+
+      ul{
+        display: flex;
+        height: inherit;
+
+        li {
+          height: inherit;
+          width: 4.35rem;
+          position: relative;
+
+          section {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            display: block;
+            height: 5.2rem;
+            width: 3.5rem;
+            background: {
+              position: center;
+              size: cover;
+              repeat: no-repeat;
+            };
+          }
+        }
+      }
+    }
+  }
+}

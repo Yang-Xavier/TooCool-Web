@@ -17,6 +17,7 @@ body,ul,li {
 body {
   font-size: 12px;
   font-family: ubuntu, helvetica, arial;
+  color: #fff;
   overflow: hidden; /* this is important to prevent the whole page to bounce */
 }
 
@@ -61,19 +62,29 @@ body {
 }
 
 
-.test-appear {
-  transform: translateX(100%);
 
-  &.test-appear-active {
-    transform: translateX(0);
-    transition: all .6s linear;
+
+.add-ons {
+  margin-top: 1rem;
+  button {
+    color: #fff;
   }
-}
-.test-leave {
-  transform: translateX(0);
 
-  &.test-leave-active {
+
+  .test-enter {
     transform: translateX(100%);
-    transition: all .6s linear;
+
+    &.test-enter-active {
+      transform: translateX(0);
+      transition: all .6s linear;
+    }
+  }
+  .test-leave {
+    transform: translateX(0);
+
+    &.test-leave-active {
+      transform: translateX(100%);
+      transition: all .6s linear;
+    }
   }
 }

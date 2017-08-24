@@ -65,13 +65,16 @@ module.exports = {
             filename: 'index.html',
             template: './src/view/index.html',
             inject: true,
-        })
+        }),
+        new webpack.optimize.UglifyJsPlugin()
     ],
     devServer: {
         inline: true,
-        port: 80,
+        port: 8081,
         publicPath: '/static/',
-        host:'192.168.2.189',
+        // host:'192.168.2.189',
+        // host:'172.20.10.5',
         // host:'192.168.31.207',
+        host:'www.static_xavier.com'
     }
 };

@@ -3,15 +3,29 @@
  */
 
 import React from 'react'
-import ImagePane from '../ImageProcess/ImagePane'
+import ImagePane from './ImagePane'
 import DrawImgBoard from '../ImageProcess/DrawIngBoard'
+import WorkPane from './WorkPane'
+import FooterNav from '../com/FooterNav'
+import FooterBar from '../com/FooterBar'
+import WaitingAnimation from '../com/WaitingAnimation'
+
+
 import touch from 'touchjs'
 
-import origin_img from '../../images/test/p1.png'
-import result_img from '../../images/test/guichu.png'
-import protect_img from '../../images/test/IMG_3793.JPG'
+import api from '../../utils/API'
+import {ajax} from '../../utils/Network'
 
 
+
+const dataURLtoBlob = (dataurl) => {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type:mime});
+}
 
 export default class StyleMasker extends React.Component {
     constructor(props) {
@@ -21,6 +35,7 @@ export default class StyleMasker extends React.Component {
             scale: 0,
             isModifiy: false,
             imgNode: null,
+            didMount: false,
             cvs: null,
             ctx: null,
             cvsInfo: {},
@@ -47,7 +62,9 @@ export default class StyleMasker extends React.Component {
 
     forwardAnimate() {
         return new Promise(res => {
-            this.refs['pane'].style.transform = `translateX(100%)`;
+            this.setState({
+                didMount: false
+            });
             setTimeout(() => {
                 res();
             },600)
@@ -55,6 +72,9 @@ export default class StyleMasker extends React.Component {
     }
 
     produceImg() {
+        this.setState({
+            wait:true
+        });
         const imgData = this.state.cvs.toDataURL();
         const img = document.createElement('img');
         const cvs = document.createElement('canvas');
@@ -68,8 +88,19 @@ export default class StyleMasker extends React.Component {
                 img.src = imgData;
                 img.onload = e => {
                     ctx.drawImage(img, 0, 0);
-                    this.props.changeShowImg(cvs.toDataURL());
-                    res();
+                    const blob = dataURLtoBlob(cvs.toDataURL());
+                    const fData = new FormData();
+                    fData.append('img', blob);
+                    const option = {
+                        method: 'post',
+                        url: api.fileUpload,
+                        data: fData
+                    };
+                    ajax(option).then( result => {
+                        this.props.changeShowImg(result.data.img);
+                        res();
+                    })
+
                 }
             }
         })
@@ -100,12 +131,16 @@ export default class StyleMasker extends React.Component {
 
     addCvsEvents() {
 
-        this.ctxInit();
-
         touch.on(this.state.cvs, 'touchstart', e => {
+            if(!this.state.cvsInfo.pageX) {
+                let info = this.getDomOnPageXY(this.state.cvs);
+                this.state.cvsInfo.pageX = info[0];
+                this.state.cvsInfo.pageY = info[1];
+            }
+
             let touch = e.touches[0];
-            this.state.drawInfo.lx = ((touch.pageX - this.state.cvsInfo.pageX) / this.state.scale ).toFixed(0);
-            this.state.drawInfo.ly = ((touch.pageY - this.state.cvsInfo.pageY) / this.state.scale ).toFixed(0);
+            this.state.drawInfo.lx = ((touch.pageX - this.state.cvsInfo.pageX) * this.state.scale ).toFixed(0);
+            this.state.drawInfo.ly = ((touch.pageY - this.state.cvsInfo.pageY) * this.state.scale ).toFixed(0);
             this.setState({
                 isModifiy: true
             })
@@ -113,29 +148,23 @@ export default class StyleMasker extends React.Component {
 
         touch.on(this.state.cvs, 'touchmove', e => {
             let touch = e.touches[0];
-            let x = ((touch.pageX - this.state.cvsInfo.pageX) / this.state.scale ).toFixed(0),
-                y = ((touch.pageY - this.state.cvsInfo.pageY) / this.state.scale ).toFixed(0);
+            let x = ((touch.pageX - this.state.cvsInfo.pageX) * this.state.scale).toFixed(0),
+                y = ((touch.pageY - this.state.cvsInfo.pageY) * this.state.scale).toFixed(0);
             this.state.ctx.globalCompositeOperation="destination-out";
             this.state.ctx.beginPath();
-            this.state.ctx.lineWidth = (this.state.drawInfo.lineWidth / this.state.scale).toFixed(0);
+            this.state.ctx.lineWidth = (this.state.drawInfo.lineWidth * this.state.scale).toFixed(0);
             this.state.ctx.strokeStyle = `rgba(0,0,0,${this.state.fluxInfo.opacity})`;
             this.state.ctx.lineCap = 'round';
             this.state.ctx.moveTo(this.state.drawInfo.lx,this.state.drawInfo.ly);
             this.state.ctx.lineTo(x,y);
             this.state.ctx.stroke();
-            this.state.ctx.closePath();
             this.state.drawInfo.lx = x;
             this.state.drawInfo.ly = y;
         });
 
-        // touch.on(this.state.cvs, 'touchend', e => {
-        //
-        // })
     }
 
     fluxSelectEvents(eventType) {
-
-
         if(eventType == 'touchstart') {
 
             return e => {
@@ -147,7 +176,7 @@ export default class StyleMasker extends React.Component {
 
             return e => {
                 const parentWidth = this.refs['select-btn'].parentElement.offsetWidth;
-                const dp = (e.touches[0].pageX - this.state.fluxInfo.lx) / parentWidth;
+                const dp = (e.touches[0].pageX - this.state.fluxInfo.lx) * 2 / parentWidth;
                 let np = this.state.fluxInfo.opacity + parseFloat(dp);
                 if(np >= 1) np = 1;
                 if(np <= 0) np = 0;
@@ -167,41 +196,30 @@ export default class StyleMasker extends React.Component {
     ctxInit() {
         this.state.ctx.clearRect(0, 0, this.state.cvs.width, this.state.cvs.height);
         const img = document.createElement('img');
-        img.src = result_img//this.props.resultImg;
+        img.src = this.props.resultImg;
         img.onload = e => {
-            this.state.ctx.drawImage(img,0 ,0)
+            this.state.ctx.drawImage(img, 0 ,0, this.state.cvs.width, this.state.cvs.height)
         }
     }
 
-    getDomOnPageXY() {
-        let x = 0,y = 0;
-        let getX = (dom) => {
-            x+= dom.offsetLeft;
-            y+= dom.offsetTop;
-            if(dom.parentElement) return getX(dom.parentElement);
-            else return[x,y]
-        };
-
-        return getX;
+    getDomOnPageXY(dom) {
+        const {top,left} = dom.getBoundingClientRect();
+        return [left,top];
     }
 
     getImgNode(imgNode) {
         this.setState({
             imgNode: imgNode,
-        });
-        this.state.cvs.width = this.state.imgNode.naturalWidth;
-        this.state.cvs.height = this.state.imgNode.naturalHeight;
-        const cvsInfo = this.getDomOnPageXY()(this.state.cvs);
-        this.setState({
-            ctx: this.state.cvs.getContext('2d'),
-            cvsInfo: {
-                pageX: cvsInfo[0],
-                pageY: cvsInfo[1]
-            }
         },() => {
-            this.addCvsEvents();
+            this.state.cvs.width = this.state.imgNode.naturalWidth || this.state.imgNode.width;
+            this.state.cvs.height = this.state.imgNode.naturalHeight || this.state.imgNode.height;
+            this.setState({
+                ctx: this.state.cvs.getContext('2d'),
+            },() => {
+                this.addCvsEvents();
+                this.ctxInit();
+            });
         });
-
 
     }
 
@@ -218,30 +236,62 @@ export default class StyleMasker extends React.Component {
         this.state.drawInfo.lineWidth = sizeType * 25;
     }
 
+    componentDidUpdate() {
+
+    }
+
     componentDidMount() {
-        setTimeout(() => {this.refs['pane'].style.transform = `translateX(0px)`},0);
+        setTimeout(() => {
+            this.setState({
+                didMount: true
+            });
+        },0);
     }
 
     render() {
-        const animateStyle = {transform : `translateX(100%)`,transition:`all .4s linear`};
 
         return(
-            <div style={animateStyle} ref="pane" className="style-process-pane">
-                <div className="image-label masker-pane">
+            <div  ref="pane" className={`style-process-pane masker ${this.state.didMount? "enter" : ""}`}>
+                <WorkPane >
                     <ImagePane
-                        height = { screen.height - 120}
-                        img = {origin_img}
-                        className = "content-pane mask"
+                        img = {this.props.originImg}
                         postScale = {this.setScale}
-                        postImgNode = {this.getImgNode}>
-                    <DrawImgBoard
-                        postCanvas = {this.getCanvas}
-                    />
+                        postImgNode = {this.getImgNode}
+                    >
+                        <DrawImgBoard
+                            postCanvas = {this.getCanvas}
+                        />
                     </ImagePane>
-                </div>
-                <div className="tool-bar masker-tool">
-                    <div className="option">
-                        <div className="title flux">
+                </WorkPane>
+                <FooterNav className="tool-bar masker-tool">
+                    <FooterBar className="option">
+                        <ul className="pen-choice">
+                            <li
+                                onTouchStart={e => {this.changePointSize(1)}}
+                                className={` ${this.state.pointSize == 1 ? 'choice' : ''}`}>
+                                <div/>
+                                <i/>
+                            </li>
+                            <li
+                                onTouchStart={e => {this.changePointSize(2)}}
+                                className={` ${this.state.pointSize == 2 ? 'choice' : ''}`}>
+                                <div/>
+                                <i/>
+                            </li>
+                            <li
+                                onTouchStart={e => {this.changePointSize(3)}}
+                                className={` ${this.state.pointSize == 3 ? 'choice' : ''}`}>
+                                <div/>
+                                <i/>
+                            </li>
+                            <li
+                                onTouchStart={e => {this.changePointSize(4)}}
+                                className={` ${this.state.pointSize == 4 ? 'choice' : ''}`}>
+                                <div/>
+                                <i/>
+                            </li>
+                        </ul>
+                        <div className="flux">
                             <div className="label">
                                 <span>{`${parseFloat(this.state.fluxInfo.percent)}%`}</span>
                             </div>
@@ -249,61 +299,34 @@ export default class StyleMasker extends React.Component {
                                 <div className="road"/>
                                 <div
                                     className="btn"
-                                    style={{left: `${parseFloat(this.state.fluxInfo.percent)*0.80}%`}}
+                                    style={{left: `${parseFloat(this.state.fluxInfo.percent)*0.75}%`}}
                                     onTouchStart={this.fluxSelectEvents('touchstart')}
                                     onTouchMove={this.fluxSelectEvents('touchmove')}
                                 />
                             </div>
                         </div>
-                        <div>
-                            <ul>
-                                <li
-                                    onTouchStart={e => {this.changePointSize(1)}}
-                                    className={`c1 ${this.state.pointSize == 1 ? 'animated' : ''}`}>
-                                    <div/>
-                                    <i/>
-                                </li>
-                                <li
-                                    onTouchStart={e => {this.changePointSize(2)}}
-                                    className={`c2 ${this.state.pointSize == 2 ? 'animated' : ''}`}>
-                                    <div/>
-                                    <i/>
-                                </li>
-                                <li
-                                    onTouchStart={e => {this.changePointSize(3)}}
-                                    className={`c3 ${this.state.pointSize == 3 ? 'animated' : ''}`}>
-                                    <div/>
-                                    <i/>
-                                </li>
-                                <li
-                                    onTouchStart={e => {this.changePointSize(4)}}
-                                    className={`c4 ${this.state.pointSize == 4 ? 'animated' : ''}`}>
-                                    <div/>
-                                    <i/>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div className="title model">模板</div>
-                        </div>
-                    </div>
-                    <div className="menu">
-                        <span
+                        <div className="model">模板</div>
+                    </FooterBar>
+                    <ul className="transfer-items">
+                        <li
                             onTouchStart = {e => {this.back();}}
-                            className="forward"/>
-                        <span className="title">遮罩</span>
-                        <span
+                            className="btn icon-back"/>
+                        <li className="title">遮罩</li>
+                        <li
                             onTouchStart={e => {
                                 if(this.state.isModifiy) {
                                     this.saveAndBack();
                                 } else {
                                     this.back();
                                 }
-                            }}
-                            className="check"/>
-                    </div>
-                </div>
+                            }
+                            }
+                            className="btn icon-check"/>
+                    </ul>
+                </FooterNav>
+                {this.state.wait? <WaitingAnimation/>:null}
             </div>
         )
     }
 }
+

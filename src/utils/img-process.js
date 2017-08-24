@@ -38,7 +38,7 @@ export const readFileAsImg = file => {
 
 };
 
-export const resize = (img, max_width = screen.width, max_height = screen.height) => {
+export const resize = (img, max_width = screen.width, max_height = screen.height, onlyWH = false) => {
     if(!img.complete) {
         throw '图片加载完成才能处理'
     }
@@ -47,8 +47,8 @@ export const resize = (img, max_width = screen.width, max_height = screen.height
             res(img);
         });
     }
-    const imgWidth = img.width;
-    const imgHeight = img.height;
+    const imgWidth = img.naturalWidth;
+    const imgHeight = img.naturalHeight;
     let newWidth = 0;
     let newHeight = 0;
     let scale = imgWidth/max_width;
@@ -60,10 +60,11 @@ export const resize = (img, max_width = screen.width, max_height = screen.height
         newWidth = max_width;
         newHeight = (imgHeight/scale).toFixed(0);
     }
+    if(onlyWH) {
+        return {width: newWidth, height: newHeight};
+    }
     const cvs = document.createElement('canvas');
     const ctx = cvs.getContext('2d');
-    newHeight*=2;
-    newWidth*=2;
     cvs.width = newWidth;
     cvs.height = newHeight;
     ctx.drawImage(img, 0, 0, newWidth , newHeight);
@@ -173,6 +174,41 @@ export const rotate = (img, forward, deg = 90) => {
                 res(img)
             });
             break;
-
     }
+};
+
+const readAsDataUrl = file => {
+    const fread =new  FileReader();
+    fread.readAsDataURL(file);
+    return new Promise( res => {
+        fread.onload = e => {
+            const img = document.createElement('img');
+            img.src = fread.result;
+            img.onload = e => {
+                res(img);
+            }
+
+        }
+    })
+
+};
+
+export const compressImg = (imgFile,size) => {
+    return new Promise ( res => {
+        readAsDataUrl(imgFile).then(img => {
+            resize(img).then( newImg => {
+                const data = newImg.src;
+                let arr = data.split(','),
+                    mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]),
+                    n = bstr.length,
+                    u8arr = new Uint8Array(n);
+                while(n--){
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                res(new Blob([u8arr], {type:mime}))
+            })
+        })
+    })
+
 };

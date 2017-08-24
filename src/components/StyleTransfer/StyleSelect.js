@@ -7,6 +7,7 @@ import IScroll from 'iscroll'
 
 import custom from '../../images/icon/style/custom.png'
 import styleImg from '../../images/test/s.png'
+
 let styleImgList = [];
 for(let i = 0 ; i< 10; i++) {
     styleImgList.push(styleImg);
@@ -49,8 +50,7 @@ export default class StyleSelect extends React.Component {
                     onClick={this.goToCustom}
                 />
             </li>
-        )
-
+        );
 
         return list
     }

@@ -1,0 +1,169 @@
+@mixin font {
+  text-align: center;
+  color: #fff;
+  font: {
+    family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", \5fae\8f6f\96c5\9ed1, "WenQuanYi Micro Hei", \5b8b\4f53, sans-serif;
+    weight: 300;
+  }
+};
+@mixin icon {
+  background-repeat: no-repeat;
+  background-size: 1.2rem 1.2rem;
+  background-position: center ;
+}
+
+//继承main-pane样式
+.filter-pane {
+  .head-nav {
+    flex: {
+      shrink: 0;
+    };
+  }
+
+  .work-pane {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+      margin: auto auto;
+    }
+
+    img,
+    canvas {
+      width: inherit;
+      height: inherit;
+    }
+
+  }
+
+  .tool-menu {
+    flex: 0 0 9.375rem;
+    display: flex;
+    flex: {
+      direction: column;
+      wrap: nowrap;
+    };
+
+    justify-content: space-between;
+
+    .item-list {
+      width: 100%;
+      flex: 0 1 100% ;
+
+
+    }
+
+    .foot-bar {
+      @include font;
+      width: 100%;
+      flex: 0 0 3.125rem;
+      display: flex;
+      flex-direction: row;
+      flex: {
+        direction: row;
+        wrap: nowrap;
+      };
+      justify-content: space-around;
+      background: #282826 ;
+      font-size: .75rem;
+
+      .home-menu {
+        display: flex;
+        flex: {
+          direction: row;
+          wrap: nowrap;
+          shrink: 0;
+          basis: 100%;
+        };
+        width: 100%;
+        justify-content: space-around;
+
+        li {
+          width: 20%;
+          height: 100%;
+          display: flex;
+          text-align: center;
+          flex: {
+            direction: column;
+          };
+
+          i {
+            flex: {
+              shrink: 0;
+              basis:  1.5625rem;
+            };
+            @include icon;
+            background-position: bottom;
+          }
+
+          label {
+            flex: {
+              shrink: 0;
+              basis: 1.5625rem;
+            };
+            line-height: 2;
+          }
+
+          &:nth-child(1) {
+            i {
+              background-image: url('../images/icon/filter/lvjing_gray.png');
+
+              &.choice {
+                background-image: url('../images/icon/filter/lvjing_green.png');
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            i {
+              background-image: url('../images/icon/filter/wenzi_gray.png');
+              &.choice {
+                background-image: url('../images/icon/filter/wenzi_green.png');
+              }
+            }
+          }
+
+          &:nth-child(3) {
+            i {
+              background-image: url('../images/icon/filter/gongjuxiang_gray.png');
+            }
+
+            &.choice {
+              background-image: url('../images/icon/filter/gongjuxiang_green.png');
+            }
+          }
+
+          &.choice {
+            color: #53CEC7;
+            &:nth-child(1) {
+              i {
+                background-image: url('../images/icon/filter/lvjing_green.png');
+              }
+
+            }
+            &:nth-child(2) {
+              i {
+                background-image: url('../images/icon/filter/wenzi_green.png');
+              }
+
+            }
+            &:nth-child(3) {
+              i {
+                background-image: url('../images/icon/filter/gongjuxiang_green.png');
+              }
+
+            }
+          }
+
+        }
+
+      }
+
+      .btn {
+
+      }
+    }
+  }
+}
